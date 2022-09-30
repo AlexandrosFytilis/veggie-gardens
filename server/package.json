@@ -1,10 +1,12 @@
 {
   "name": "server",
+  "type": "module",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "src/server.js",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "eslint": "^8.24.0",
     "express": "^4.18.1",
     "helmet": "^6.0.0",
     "mongodb": "^4.10.0",
@@ -13,6 +15,6 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon src/server.js"
   }
 }
