@@ -1,10 +1,20 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+import { Home } from "./components/Home";
+import { Login } from "./components/registration/Login";
+import { SignUp } from "./components/registration/SignUp";
+import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
   return (
-    <div>
-      <h1>vegetables</h1>
-    </div>
+    <BrowserRouter>
+      <GlobalStyles />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 

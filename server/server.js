@@ -8,9 +8,8 @@ express()
   .use(helmet())
   .use(morgan("tiny"))
 
-  .get("/hello", (req, res) => {
-    res.status(200).json({status: 200, message: "Hi!"})
-  })
+  .post("/users", addUser)
+  
 
   .listen(port, () => {
   console.log(`Server launched on port ${port}`)
