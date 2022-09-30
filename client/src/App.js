@@ -1,21 +1,21 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import styled from "styled-components";
-import { Home } from "./components/Home";
-import { Login } from "./components/registration/Login";
-import { SignUp } from "./components/registration/SignUp";
-import GlobalStyles from "./GlobalStyles";
+import { Home } from "./pages/home/Home.js";
+import { Login } from "./pages/login/Login.js";
+import { SignUp } from "./pages/signup/SignUp.js";
+import GlobalStyles from "./GlobalStyles.js";
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 export const Login = () => {
@@ -45,14 +46,14 @@ export const Login = () => {
 
       </Form>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   
-`
+`;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-`
+`;

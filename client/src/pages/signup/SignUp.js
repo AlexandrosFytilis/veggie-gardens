@@ -1,5 +1,5 @@
+import React from "react";
 import { useState } from "react";
-import styled from "styled-components";
 
 export const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -8,7 +8,7 @@ export const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: ""
-  })
+  });
 
   return (
     <div>
@@ -65,11 +65,11 @@ export const SignUp = () => {
           <button
             type="submit"
             onClick={async (e) => {
-              e.preventDefault()
-              console.log(signUpInfo)
+              e.preventDefault();
+              console.log(signUpInfo);
 
               if (signUpInfo.password !== signUpInfo.confirmPassword) {
-                console.log("passwords don't match")
+                console.log("passwords don't match");
               } else {
                 await fetch("/add-user", {
                   method: "POST",
@@ -83,7 +83,7 @@ export const SignUp = () => {
                     email: signUpInfo.email,
                     password: signUpInfo.password
                   })
-                })
+                });
               }
             }}
           >
@@ -93,5 +93,5 @@ export const SignUp = () => {
 
       </form>
     </div>
-  )
-}
+  );
+};
