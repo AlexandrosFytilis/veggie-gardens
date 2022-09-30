@@ -17,55 +17,74 @@ export const SignUp = () => {
 
         <div>
           <label>First name</label>
-          <input 
+          <input
             type={"text"}
             placeholder={"First name"}
-            onChange={(e) => setSignUpInfo({ ...signUpInfo, firstName: e.target.value})}
+            onChange={(e) => setSignUpInfo({ ...signUpInfo, firstName: e.target.value })}
           />
         </div>
 
         <div>
           <label>Last name</label>
-          <input 
+          <input
             type={"text"}
             placeholder={"Last name"}
-            onChange={(e) => setSignUpInfo({...signUpInfo, lastName: e.target.value})}
+            onChange={(e) => setSignUpInfo({ ...signUpInfo, lastName: e.target.value })}
           />
         </div>
 
         <div>
           <label>Email</label>
-          <input 
+          <input
             type={"email"}
             placeholder={"First email"}
-            onChange={(e) => setSignUpInfo({...signUpInfo, email: e.target.value})}
+            onChange={(e) => setSignUpInfo({ ...signUpInfo, email: e.target.value })}
           />
         </div>
 
         <div>
           <label>Password</label>
-          <input 
+          <input
             type={"password"}
             placeholder={"Password"}
-            onChange={(e) => setSignUpInfo({...signUpInfo, password: e.target.value})}
+            onChange={(e) => setSignUpInfo({ ...signUpInfo, password: e.target.value })}
           />
         </div>
 
         <div>
           <label>Confirm password</label>
-          <input 
+          <input
             type={"password"}
+            required={true}
             placeholder={"Confirm password"}
-            onChange={(e) => setSignUpInfo({...signUpInfo, confirmPassword: e.target.value})}
+            onChange={(e) => setSignUpInfo({ ...signUpInfo, confirmPassword: e.target.value })}
           />
         </div>
 
         <div>
           <button
             type="submit"
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault()
               console.log(signUpInfo)
+
+              if (signUpInfo.password !== signUpInfo.confirmPassword) {
+                console.log("passwords don't match")
+              } else {
+                await fetch("/add-user", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                  },
+                  body: JSON.stringify({
+                    firstName: signUpInfo.firstName,
+                    lastName: signUpInfo.lastName,
+                    email: signUpInfo.email,
+                    password: signUpInfo.password
+                  })
+                })
+              }
             }}
           >
             Submit
