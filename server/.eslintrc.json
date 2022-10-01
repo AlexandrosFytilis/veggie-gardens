@@ -8,7 +8,8 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:import/recommended"
   ],
   "rules": {
     "indent": [
@@ -26,6 +27,7 @@
     "eol-last": [
       "error",
       "always"
-    ]
+    ],
+    "import/extensions": ["error", "always"]
   }
 }

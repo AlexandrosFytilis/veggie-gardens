@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
+import { useLogin } from "./hooks/useLogin.js";
 
 export const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: ""
   });
-  console.log(loginInfo);
+  const login = useLogin();
+
   return (
     <Wrapper>
       <Form>
@@ -19,10 +21,7 @@ export const Login = () => {
             type="submit"
             onClick={async (e) => {
               e.preventDefault();
-              console.log(loginInfo);
-              const response = await fetch(`/users/${loginInfo.email}`);
-              const json = await response.json();
-              console.log(json);
+              login(loginInfo);
             }}
           >
             Submit
@@ -37,7 +36,6 @@ export const Login = () => {
 };
 
 const Wrapper = styled.div`
-  
 `;
 
 const Form = styled.form`

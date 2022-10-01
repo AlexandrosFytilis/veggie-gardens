@@ -1,27 +1,16 @@
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
+import { client } from "../server.js";
 
-dotenv.config();
-
-const { MONGO_URI } = process.env;
-
-export const addUser = async (req, res) => {
-  const client = new MongoClient(MONGO_URI);
-
-  await client.connect();
-
+export const addUser = async (request, response) => {
   const usersCollection = client.db("final_project").collection("users");
 
-  const requestedEmail = req.body.email;
+  const requestedEmail = request.body.email;
 
   if (await usersCollection.findOne({email: requestedEmail}) !== null) {
-    res.status(409).send({data: requestedEmail, message: "email already used"});
+    response.status(409).send({data: requestedEmail, message: "email already used"});
     return;
   }
 
-  await usersCollection.insertOne(req.body);
+  await usersCollection.insertOne(request.body);
 
-  res.status(201).send({status: 201, data: req.body});
-
-  client.close();
+  response.status(201).send({status: 201, data: request.body});
 };

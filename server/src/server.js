@@ -4,19 +4,29 @@ import morgan from "morgan";
 import { addUser } from "./handlers/addUser.js";
 import { getUser } from "./handlers/getUser.js";
 import { getUsers } from "./handlers/getUsers.js";
+import { MongoClient } from "mongodb";
+import { createSession } from "./handlers/createSession.js";
+import dotenv from "dotenv";
 
-const port = 8000;
+const PORT = 8000;
+dotenv.config();
+const { MONGO_URI } = process.env;
 
-express()
-  .use(helmet())
-  .use(morgan("tiny"))
-  .use(express.json())
+export const client = new MongoClient(MONGO_URI);
 
-  .post("/users", addUser)
-  .get("/users", getUsers)
-  .get("/users/:email", getUser)
-  .post("/sessions")
+client.connect()
+  .then(() => {
+    express()
+      .use(helmet())
+      .use(morgan("tiny"))
+      .use(express.json())
 
-  .listen(port, () => {
-    console.log(`Server launched on port ${port}`);
+      .post("/users", addUser)
+      .get("/users", getUsers)
+      .get("/users/:email", getUser)
+      .post("/sessions", createSession)
+
+      .listen(PORT, () => {
+        console.log(`Server launched on port ${PORT}`);
+      });
   });

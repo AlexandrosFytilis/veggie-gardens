@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
-const useCreateUser = () => {
+const useSignUp = () => {
   const navigate = useNavigate();
 
   return useCallback(async (userInfo) => {
@@ -17,7 +17,7 @@ const useCreateUser = () => {
       })
     });
     const json = await response.json();
-    if (json.status === 201) {
+    if (response.ok) {
       navigate("/");
     } else {
       alert(json.message);
@@ -25,4 +25,4 @@ const useCreateUser = () => {
   }, [navigate]);
 };
 
-export default useCreateUser;
+export default useSignUp;

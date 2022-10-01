@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import TextInput from "../../general/components/TextInput.js";
-import useCreateUser from "./hooks/useCreateUser.js";
+import useSignUp from "./hooks/useSignUp.js";
 
 const isFormIncomplete = (form) => {
   return Object.values(form).some((value) => value.length === 0);
@@ -15,7 +15,7 @@ export const SignUp = () => {
     password: "",
     confirmPassword: ""
   });
-  const createUser = useCreateUser();
+  const signUp = useSignUp();
 
   return (
     <div>
@@ -39,7 +39,7 @@ export const SignUp = () => {
                 if (signUpInfo.password !== signUpInfo.confirmPassword) {
                   alert("passwords don't match");
                 } else {
-                  await createUser(signUpInfo);
+                  await signUp(signUpInfo);
                 }
               }}
             >

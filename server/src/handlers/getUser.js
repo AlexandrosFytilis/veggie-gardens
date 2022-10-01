@@ -1,13 +1,7 @@
-import { MongoClient } from "mongodb";
-
-const { MONGO_URI } = process.env;
+import { client } from "../server.js";
 
 export const getUser = async (request, response) => {
   const { email } = request.params;
-
-  const client = new MongoClient(MONGO_URI);
-
-  await client.connect();
 
   const usersCollection = client.db("final_project").collection("users");
 
@@ -21,6 +15,4 @@ export const getUser = async (request, response) => {
   } else {
     response.sendStatus(404);
   }
-
-  client.close();
 };
