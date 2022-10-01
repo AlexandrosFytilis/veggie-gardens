@@ -10,6 +10,7 @@
     "eslint:recommended",
     "plugin:react/recommended"
   ],
+  "plugins": ["react", "react-hooks"],
   "rules": {
     "indent": [
       "error",
@@ -26,6 +27,8 @@
     "eol-last": [
       "error",
       "always"
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error" 
   }
 }

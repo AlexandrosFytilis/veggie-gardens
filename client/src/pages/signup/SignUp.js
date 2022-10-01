@@ -1,5 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import TextInput from "../../general/components/TextInput.js";
+import useCreateUser from "./hooks/useCreateUser.js";
+
+const isFormIncomplete = (form) => {
+  return Object.values(form).some((value) => value.length === 0);
+};
 
 export const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -9,88 +15,38 @@ export const SignUp = () => {
     password: "",
     confirmPassword: ""
   });
+  const createUser = useCreateUser();
 
   return (
     <div>
       <form>
         <h2>Sign up</h2>
-
+        <TextInput setForm={setSignUpInfo} label="First name" type="text" formKey="firstName" />
+        <TextInput setForm={setSignUpInfo} label="Last name" type="text" formKey="lastName" />
+        <TextInput setForm={setSignUpInfo} label="Email" type="email" formKey="email" />
+        <TextInput setForm={setSignUpInfo} label="Password" type="password" formKey="password" />
+        <TextInput setForm={setSignUpInfo} label="Confirm password" type="password" formKey="confirmPassword" />
         <div>
-          <label>First name</label>
-          <input
-            type={"text"}
-            placeholder={"First name"}
-            onChange={(e) => setSignUpInfo({ ...signUpInfo, firstName: e.target.value })}
-          />
+          {isFormIncomplete(signUpInfo) ? (
+            <button disabled>
+                Disabled
+            </button>
+          ) : (
+            <button
+              type="submit"
+              onClick={async (e) => {
+                e.preventDefault();
+                if (signUpInfo.password !== signUpInfo.confirmPassword) {
+                  alert("passwords don't match");
+                } else {
+                  await createUser(signUpInfo);
+                }
+              }}
+            >
+              Submit
+            </button>
+          )}
         </div>
-
-        <div>
-          <label>Last name</label>
-          <input
-            type={"text"}
-            placeholder={"Last name"}
-            onChange={(e) => setSignUpInfo({ ...signUpInfo, lastName: e.target.value })}
-          />
-        </div>
-
-        <div>
-          <label>Email</label>
-          <input
-            type={"email"}
-            placeholder={"First email"}
-            onChange={(e) => setSignUpInfo({ ...signUpInfo, email: e.target.value })}
-          />
-        </div>
-
-        <div>
-          <label>Password</label>
-          <input
-            type={"password"}
-            placeholder={"Password"}
-            onChange={(e) => setSignUpInfo({ ...signUpInfo, password: e.target.value })}
-          />
-        </div>
-
-        <div>
-          <label>Confirm password</label>
-          <input
-            type={"password"}
-            required={true}
-            placeholder={"Confirm password"}
-            onChange={(e) => setSignUpInfo({ ...signUpInfo, confirmPassword: e.target.value })}
-          />
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            onClick={async (e) => {
-              e.preventDefault();
-              console.log(signUpInfo);
-
-              if (signUpInfo.password !== signUpInfo.confirmPassword) {
-                console.log("passwords don't match");
-              } else {
-                await fetch("/add-user", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                  },
-                  body: JSON.stringify({
-                    firstName: signUpInfo.firstName,
-                    lastName: signUpInfo.lastName,
-                    email: signUpInfo.email,
-                    password: signUpInfo.password
-                  })
-                });
-              }
-            }}
-          >
-            Submit
-          </button>
-        </div>
-
       </form>
     </div>
   );

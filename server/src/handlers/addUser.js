@@ -15,13 +15,13 @@ export const addUser = async (req, res) => {
   const requestedEmail = req.body.email;
 
   if (await usersCollection.findOne({email: requestedEmail}) !== null) {
-    res.status(400).send({data: requestedEmail, message: "email already used"});
+    res.status(409).send({data: requestedEmail, message: "email already used"});
     return;
   }
 
   await usersCollection.insertOne(req.body);
 
-  res.status(201).send({data: req.body});
+  res.status(201).send({status: 201, data: req.body});
 
   client.close();
 };
