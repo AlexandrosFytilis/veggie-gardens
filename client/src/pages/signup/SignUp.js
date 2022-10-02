@@ -27,25 +27,20 @@ export const SignUp = () => {
         <TextInput setForm={setSignUpInfo} label="Password" type="password" formKey="password" />
         <TextInput setForm={setSignUpInfo} label="Confirm password" type="password" formKey="confirmPassword" />
         <div>
-          {isFormIncomplete(signUpInfo) ? (
-            <button disabled>
-                Disabled
-            </button>
-          ) : (
-            <button
-              type="submit"
-              onClick={async (e) => {
-                e.preventDefault();
-                if (signUpInfo.password !== signUpInfo.confirmPassword) {
-                  alert("passwords don't match");
-                } else {
-                  await signUp(signUpInfo);
-                }
-              }}
-            >
+          <button
+            type="submit"
+            disabled={isFormIncomplete(signUpInfo)}
+            onClick={async (e) => {
+              e.preventDefault();
+              if (signUpInfo.password !== signUpInfo.confirmPassword) {
+                alert("passwords don't match");
+              } else {
+                await signUp(signUpInfo);
+              }
+            }}
+          >
               Submit
-            </button>
-          )}
+          </button>
         </div>
       </form>
     </div>

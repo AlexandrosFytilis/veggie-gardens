@@ -20,6 +20,7 @@
       "error",
       "double"
     ],
+    "no-unused-vars": "warn",
     "semi": [
       "error",
       "always"

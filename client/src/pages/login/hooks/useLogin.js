@@ -1,9 +1,11 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../../../general/providers/CurrenUserProvider.js";
 import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
 export const useLogin = () => {
   const navigate = useNavigate();
+  const { setCurrentUser } = useContext(CurrentUserContext);
 
   return useCallback(async (loginInfo) => {
     const response = await fetch("/sessions", {
@@ -13,10 +15,11 @@ export const useLogin = () => {
     });
     const json = await response.json();
     if (response.ok) {
-      // save in context
+      setCurrentUser(loginInfo);
+      window.localStorage.setItem("currenUser", loginInfo);
       navigate("/");
     } else {
       alert(json.message);
     }
-  }, [navigate]);
+  }, [navigate, setCurrentUser]);
 };

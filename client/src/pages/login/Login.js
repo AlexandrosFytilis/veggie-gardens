@@ -3,6 +3,16 @@ import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
 import { useLogin } from "./hooks/useLogin.js";
 
+const isFormValid = (form) => {
+  if (!form.email.match(/^.+@.+\..+$/)) {
+    return false;
+  }
+  if (form.password.length < 6) {
+    return false;
+  }
+  return true;
+};
+
 export const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -19,6 +29,7 @@ export const Login = () => {
           <TextInput setForm={setLoginInfo} label="Password" type="password" formKey="password" />
           <button
             type="submit"
+            disabled={!isFormValid(loginInfo)}
             onClick={async (e) => {
               e.preventDefault();
               login(loginInfo);
