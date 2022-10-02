@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import PropTypes from "prop-types";
 
 export const CurrentUserContext = createContext(null);
 
@@ -10,7 +9,11 @@ const CurrentUserProvider = ({ children }) => {
 
   const persistCurrentUser = (user) => {
     setCurrentUser(user);
-    window.localStorage.setItem("currenUser", JSON.stringify(user));
+    if (user === null) {
+      window.localStorage.removeItem("currenUser");
+    } else {
+      window.localStorage.setItem("currenUser", JSON.stringify(user));
+    }
   };
 
   return (
@@ -18,10 +21,6 @@ const CurrentUserProvider = ({ children }) => {
       {children}
     </CurrentUserContext.Provider>
   );
-};
-
-CurrentUserProvider.propTypes = {
-  children: PropTypes.node
 };
 
 export default CurrentUserProvider;

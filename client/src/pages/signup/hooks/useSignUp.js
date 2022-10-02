@@ -10,8 +10,7 @@ const useSignUp = () => {
       method: "POST",
       headers: DEFAULT_HEADERS,
       body: JSON.stringify({
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
+        userName: userInfo.userName,
         email: userInfo.email,
         password: userInfo.password
       })

@@ -9,8 +9,7 @@ const isFormIncomplete = (form) => {
 
 export const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     password: "",
     confirmPassword: ""
@@ -21,8 +20,7 @@ export const SignUp = () => {
     <div>
       <form>
         <h2>Sign up</h2>
-        <TextInput setForm={setSignUpInfo} label="First name" type="text" formKey="firstName" />
-        <TextInput setForm={setSignUpInfo} label="Last name" type="text" formKey="lastName" />
+        <TextInput setForm={setSignUpInfo} label="Username" type="text" formKey="userName" />
         <TextInput setForm={setSignUpInfo} label="Email" type="email" formKey="email" />
         <TextInput setForm={setSignUpInfo} label="Password" type="password" formKey="password" />
         <TextInput setForm={setSignUpInfo} label="Confirm password" type="password" formKey="confirmPassword" />

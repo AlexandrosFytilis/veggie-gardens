@@ -8,7 +8,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:import/recommended"
   ],
   "plugins": ["react", "react-hooks"],
   "rules": {
@@ -30,6 +31,8 @@
       "always"
     ],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error" 
+    "react-hooks/exhaustive-deps": "error",
+    "import/extensions": ["error", "ignorePackages"],
+    "react/prop-types": 0 
   }
 }

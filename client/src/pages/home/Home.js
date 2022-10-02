@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../../general/providers/CurrenUserProvider.js";
+import { Header } from "../../general/components/Header.js";
+import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 
 export const Home = () => {
   const { currenUser } = useContext(CurrentUserContext);
@@ -14,8 +15,8 @@ export const Home = () => {
 
   return currenUser && (
     <div>
-      <p>{currenUser.firstName}</p>
-      <p>{currenUser.lastName}</p>
+      <Header />
+      <p>Home</p>
     </div>
   );
 };

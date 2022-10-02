@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const TextInput = ({ setForm, label, type, formKey }) => {
   return (
@@ -12,13 +11,6 @@ const TextInput = ({ setForm, label, type, formKey }) => {
       />
     </div>
   );
-};
-
-TextInput.propTypes = {
-  setForm: PropTypes.func,
-  label: PropTypes.string,
-  type: PropTypes.string,
-  formKey: PropTypes.string
 };
 
 export default TextInput;

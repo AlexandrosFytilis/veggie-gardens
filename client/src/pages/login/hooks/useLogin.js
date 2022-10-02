@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../../../general/providers/CurrenUserProvider.js";
+import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
 import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
 export const useLogin = () => {
