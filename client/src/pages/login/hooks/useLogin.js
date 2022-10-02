@@ -5,7 +5,7 @@ import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(CurrentUserContext);
+  const { persistCurrentUser } = useContext(CurrentUserContext);
 
   return useCallback(async (loginInfo) => {
     const response = await fetch("/sessions", {
@@ -15,11 +15,10 @@ export const useLogin = () => {
     });
     const json = await response.json();
     if (response.ok) {
-      setCurrentUser(loginInfo);
-      window.localStorage.setItem("currenUser", loginInfo);
+      persistCurrentUser(json.data);
       navigate("/");
     } else {
       alert(json.message);
     }
-  }, [navigate, setCurrentUser]);
+  }, [navigate, persistCurrentUser]);
 };

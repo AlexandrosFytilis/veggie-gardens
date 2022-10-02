@@ -7,7 +7,7 @@ const isFormValid = (form) => {
   if (!form.email.match(/^.+@.+\..+$/)) {
     return false;
   }
-  if (form.password.length < 6) {
+  if (form.password.length < 5) {
     return false;
   }
   return true;

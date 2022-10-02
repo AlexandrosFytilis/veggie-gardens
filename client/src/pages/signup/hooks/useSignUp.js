@@ -18,7 +18,7 @@ const useSignUp = () => {
     });
     const json = await response.json();
     if (response.ok) {
-      navigate("/");
+      navigate("/login");
     } else {
       alert(json.message);
     }

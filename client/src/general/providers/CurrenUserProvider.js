@@ -6,15 +6,20 @@ export const CurrentUserContext = createContext(null);
 const CurrentUserProvider = ({ children }) => {
   const [currenUser, setCurrentUser] = useState(window.localStorage.getItem("currenUser"));
 
+  const persistCurrentUser = (user) => {
+    setCurrentUser(user);
+    window.localStorage.setItem("currenUser", user);
+  };
+
   return (
-    <CurrentUserContext.Provider value={{ currenUser, setCurrentUser }}>
+    <CurrentUserContext.Provider value={{ currenUser, persistCurrentUser }}>
       {children}
     </CurrentUserContext.Provider>
   );
 };
 
 CurrentUserProvider.propTypes = {
-  children: PropTypes
+  children: PropTypes.node
 };
 
 export default CurrentUserProvider;
