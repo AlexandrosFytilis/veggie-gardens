@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Header } from "../../general/components/Header.js";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { SideBar } from "./Sidebar.js";
 
 export const Home = () => {
   const { currenUser } = useContext(CurrentUserContext);
@@ -14,9 +16,24 @@ export const Home = () => {
   }, [currenUser, navigate]);
 
   return currenUser && (
-    <div>
+    <Wrapper>
       <Header />
-      <p>Home</p>
-    </div>
+      <HomeContainer>
+        <SideBar />
+        <p>Home</p>
+      </HomeContainer>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  background: blue;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const HomeContainer = styled.div`
+  display: flex;
+`;
