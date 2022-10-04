@@ -12,7 +12,8 @@ const useSignUp = () => {
       body: JSON.stringify({
         userName: userInfo.userName,
         email: userInfo.email,
-        password: userInfo.password
+        password: userInfo.password,
+        gardens: []
       })
     });
     const json = await response.json();

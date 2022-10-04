@@ -7,6 +7,8 @@ import { getUsers } from "./handlers/getUsers.js";
 import { MongoClient } from "mongodb";
 import { createSession } from "./handlers/createSession.js";
 import dotenv from "dotenv";
+import { addGarden } from "./handlers/addGarden.js";
+import { updateGardens } from "./handlers/updateGardens.js";
 
 const PORT = 8000;
 dotenv.config();
@@ -23,8 +25,10 @@ client.connect()
 
       .post("/users", addUser)
       .get("/users", getUsers)
+      .patch("/users", updateGardens)
       .get("/users/:email", getUser)
       .post("/sessions", createSession)
+      .post("/gardens", addGarden)
 
       .listen(PORT, () => {
         console.log(`Server launched on port ${PORT}`);

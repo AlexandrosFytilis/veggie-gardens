@@ -13,7 +13,8 @@
     "mongodb": "^4.10.0",
     "morgan": "^1.10.0",
     "node": "^18.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "start": "nodemon src/server.js"
