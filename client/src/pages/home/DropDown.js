@@ -1,39 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { DropDownOption } from "./DropDownOption.js";
+import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const Dropdown = () => {
   const [selected, setSelected] = useState(false);
   const [value, setValue] = useState("");
-  const { selectedGardenVegetables, setSelectedGardenVegetables } = useContext(CurrentUserContext);
 
-  const itemList = [
-    "Tomato",
-    "Carrot",
-    "Cucumber",
-    "Corn",
-    "Onion",
-    "Potato",
-    "Celery",
-    "Raddish"
-  ];
-
-  const dataList = [
-    {
-      name: "Tomato",
-      description: "This is a Tomato"
-    },
-    {
-      name: "Carrot",
-      description: "This is a Carrot"
-    },
-    {
-      name: "Cucumber",
-      description: "This is a Cucumber"
-    },
-  ];
-
-  console.log(selectedGardenVegetables);
+  const itemList = vegetableData.map((element) => element.name);
 
   const [filteredList, setFilteredList] = useState(itemList);
 
@@ -70,21 +44,7 @@ export const Dropdown = () => {
         <div>
           {filteredList.map((item, index) => (
             <div key={index}>
-              {item}
-              <button
-                value={item}
-                onClick={(e) => {
-                  // @ts-ignore
-                  console.log(e.target.value);
-                  // @ts-ignore
-                  setSelectedGardenVegetables((current) => [...current, e.target.value]);
-                }}>+</button>
-              <button
-                value={item}
-                onClick={() => {
-                  console.log(`Information about ${item}`);
-                  reset();
-                }}>i</button>
+              <DropDownOption item={item} reset={reset}/>
             </div>
           ))}
         </div>

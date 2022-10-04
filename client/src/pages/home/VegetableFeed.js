@@ -1,29 +1,20 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const VegetableFeed = () => {
   const { selectedGardenVegetables } = useContext(CurrentUserContext);
 
-  const itemList = [
-    "Tomato",
-    "Carrot",
-    "Cucumber",
-    "Corn",
-    "Onion",
-    "Potato",
-    "Celery",
-    "Raddish"
-  ];
-
   return (
     <Wrapper>
       {selectedGardenVegetables.map((item, index) => {
-        
+        const vegetableInformation = vegetableData.find((element) => element.name === item);
         return (
-          <div key={index}>
-            <p>{item}</p>
-          </div>
+          <SingleVegetableContainer key={index}>
+            <p>{vegetableInformation.name}</p>
+            <p>{vegetableInformation.description}</p>
+          </SingleVegetableContainer>
         );
       })}
     </Wrapper>
@@ -32,6 +23,9 @@ export const VegetableFeed = () => {
 
 const Wrapper = styled.div`
   background: white;
-  min-height: 100%;
   width: 100%;
+`;
+
+const SingleVegetableContainer = styled.div`
+  border-bottom: solid black 1px;
 `;

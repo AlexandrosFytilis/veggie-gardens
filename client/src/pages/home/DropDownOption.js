@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 
-export const CropDownOption = ({ item, reset }) => {
+export const DropDownOption = ({ item, reset }) => {
   const { setSelectedGardenVegetables } = useContext(CurrentUserContext);
 
   return (
@@ -14,7 +14,7 @@ export const CropDownOption = ({ item, reset }) => {
           console.log(e.target.value);
           // @ts-ignore
           setSelectedGardenVegetables((current) => [...current, e.target.value]);
-        }}> +</button>
+        }}>+</button>
       <button
         value={item}
         onClick={() => {
