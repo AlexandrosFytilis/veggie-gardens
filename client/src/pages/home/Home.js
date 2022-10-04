@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Header } from "../../general/components/Header.js";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { SideBar } from "./Sidebar.js";
+import { VegetableFeed } from "./VegetableFeed.js";
 
 export const Home = () => {
   const { currenUser } = useContext(CurrentUserContext);
@@ -20,7 +21,7 @@ export const Home = () => {
       <Header />
       <HomeContainer>
         <SideBar />
-        <p>Home</p>
+        <VegetableFeed />
       </HomeContainer>
     </Wrapper>
   );
