@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
-
-import { vegetableData } from "../../general/utils/vegatableData.js";
+import { useDeleteVegetable } from "./hooks/useDeleteVegetable.js";
 
 export const VegetableFeed = () => {
   const { vegetables } = useContext(CurrentUserContext);
+  const deleteVegetable = useDeleteVegetable();
 
   if (!vegetables) {
     return null;
@@ -14,11 +14,15 @@ export const VegetableFeed = () => {
   return (
     <Wrapper>
       {vegetables.map((item, index) => {
-        const vegetableInformation = vegetableData.find((element) => element.name === item.name);
+        console.log(item);
         return (
           <SingleVegetableContainer key={index}>
-            <p>{vegetableInformation.name}</p>
-            <p>{vegetableInformation.description}</p>
+            <p>{item.name}</p>
+            <p>{item.description}</p>
+            <p>{item.id}</p>
+            <button
+              onClick={() => {deleteVegetable(item.id);}
+              }>X</button>
           </SingleVegetableContainer>
         );
       })}
