@@ -4,7 +4,6 @@ import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
 export const useDeleteVegetable = () => {
   const { currentUser, fetchVegetables } = useContext(CurrentUserContext);
-  console.log(currentUser);
 
   return useCallback(async (id) => {
     const response = await fetch(`/users/${currentUser.email}/vegetables/${id}`, {

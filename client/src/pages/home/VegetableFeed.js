@@ -14,7 +14,6 @@ export const VegetableFeed = () => {
   return (
     <Wrapper>
       {vegetables.map((item, index) => {
-        console.log(item);
         return (
           <SingleVegetableContainer key={index}>
             <p>{item.name}</p>
