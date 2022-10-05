@@ -18,7 +18,15 @@ const CurrentUserProvider = ({ children }) => {
   };
 
   const fetchVegetables = useCallback(async () => {
-    const response = await fetch(`/users/${currentUser.email}`);
+    let response = null;
+    if (currentUser !== null) {
+      response = await fetch(`/users/${currentUser.email}`);
+    }
+
+    if (response === null) {
+      return;
+    }
+
     if (!response.ok) {
       const json = await response.json();
       alert(json.message);
@@ -26,7 +34,7 @@ const CurrentUserProvider = ({ children }) => {
     }
     const json = await response.json();
     setVegetables(json.data.vegetables);
-  }, [currentUser.email]);
+  }, [currentUser]);
 
   useEffect(() => {
     fetchVegetables();
