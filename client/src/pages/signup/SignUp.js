@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import TextInput from "../../general/components/TextInput.js";
 import useSignUp from "./hooks/useSignUp.js";
 
