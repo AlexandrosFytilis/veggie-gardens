@@ -1,15 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+
 import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const VegetableFeed = () => {
-  const { selectedGardenVegetables } = useContext(CurrentUserContext);
+  const { vegetables } = useContext(CurrentUserContext);
+
+  if (!vegetables) {
+    return null;
+  }
 
   return (
     <Wrapper>
-      {selectedGardenVegetables.map((item, index) => {
-        const vegetableInformation = vegetableData.find((element) => element.name === item);
+      {vegetables.map((item, index) => {
+        const vegetableInformation = vegetableData.find((element) => element.name === item.name);
         return (
           <SingleVegetableContainer key={index}>
             <p>{vegetableInformation.name}</p>

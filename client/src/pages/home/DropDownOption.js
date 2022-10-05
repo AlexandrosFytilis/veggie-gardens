@@ -1,22 +1,17 @@
-import React, { useContext } from "react";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import React from "react";
+import { useAddVegetable } from "./hooks/useAddVegetable.js";
 
 export const DropDownOption = ({ item, reset }) => {
-  const { setSelectedGardenVegetables } = useContext(CurrentUserContext);
+  const addVegetable = useAddVegetable();
 
   return (
     <>
-      {item}
+      {item.name}
       <button
-        value={item}
-        onClick={(e) => {
-          // @ts-ignore
-          console.log(e.target.value);
-          // @ts-ignore
-          setSelectedGardenVegetables((current) => [...current, e.target.value]);
+        onClick={() => {
+          addVegetable(item);
         }}>+</button>
       <button
-        value={item}
         onClick={() => {
           console.log(`Information about ${item}`);
           reset();

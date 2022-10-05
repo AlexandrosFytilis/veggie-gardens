@@ -13,6 +13,9 @@ export const getUser = async (request, response) => {
       data: user
     });
   } else {
-    response.sendStatus(404);
+    response.status(404).send({
+      status: 404,
+      message: "User not found"
+    });
   }
 };

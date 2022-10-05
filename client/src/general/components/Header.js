@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { CurrentUserContext } from "../contexts/CurrenUserProvider.js";
 
 export const Header = () => {
-  const { currenUser, persistCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser, persistCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
   return (
     <StyledHeader>
-      <p>Welcome {currenUser.userName}</p>
+      <p>Welcome {currentUser.userName}</p>
       <p>Logo</p>
       <button
         onClick={() => {

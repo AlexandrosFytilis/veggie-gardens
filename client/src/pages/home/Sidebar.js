@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { Dropdown } from "./DropDown.js";
 
 export const SideBar = () => {
-  const { currenUser } = useContext(CurrentUserContext);
 
   return (
     <Wrapper>

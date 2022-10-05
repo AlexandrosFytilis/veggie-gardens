@@ -7,16 +7,16 @@ import { SideBar } from "./Sidebar.js";
 import { VegetableFeed } from "./VegetableFeed.js";
 
 export const Home = () => {
-  const { currenUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currenUser === null) {
+    if (currentUser === null) {
       navigate("/login");
     }
-  }, [currenUser, navigate]);
+  }, [currentUser, navigate]);
 
-  return currenUser && (
+  return currentUser && (
     <Wrapper>
       <Header />
       <HomeContainer>
