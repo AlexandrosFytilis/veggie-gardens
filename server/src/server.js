@@ -10,6 +10,7 @@ import dotenv from "dotenv";
 import { addVegetable } from "./handlers/addVegetable.js";
 import { deleteVegetable } from "./handlers/deleteVegetable.js";
 import { updateVegetable } from "./handlers/updateVegetable.js";
+import { updateUser } from "./handlers/updateUser.js";
 
 
 const PORT = 8000;
@@ -28,6 +29,7 @@ client.connect()
       .post("/users", addUser)
       .get("/users", getUsers)
       .get("/users/:email", getUser)
+      .put("/users/:email", updateUser)
       .post("/sessions", createSession)
       .post("/users/:email/vegetables", addVegetable)
       .delete("/users/:email/vegetables/:id", deleteVegetable)

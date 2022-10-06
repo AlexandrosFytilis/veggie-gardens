@@ -13,6 +13,7 @@ const useSignUp = () => {
         userName: userInfo.userName,
         email: userInfo.email,
         password: userInfo.password,
+        lastWateringDay: null
       })
     });
     const json = await response.json();
