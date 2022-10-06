@@ -6,7 +6,6 @@ import { WateringTracker } from "./WateringTracker.js";
 
 export const VegetableFeed = () => {
   const { vegetables } = useContext(CurrentUserContext);
-  console.log(vegetables);
 
   if (!vegetables) {
     return null;

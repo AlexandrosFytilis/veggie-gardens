@@ -14,16 +14,21 @@ export const WateringTracker = () => {
     <Wrapper>
       <div>
         <p>today: {currentDate}</p>
-        <p>last Time Watered: {currentUser.lastWateringDay}</p>
         {currentUser.lastWateringDay !== null &&
           <div>
-            <p>{result} days since last time garden was watered</p>
+            <p>last Time Watered: {currentUser.lastWateringDay}</p>
+            {result !== 0 ? (
+              <p>{result} days since last time garden was watered.</p>
+            ) : (
+              <p>Garden was watered today!</p>
+            )}
           </div>
         }
       </div>
       <button
-        onClick={() => waterPlants("2022-10-03")}
-      >Water</button>
+        disabled={result === 0 ? true : false}
+        onClick={() => waterPlants(currentDate)}
+      >Water Garden</button>
     </Wrapper>
   );
 };

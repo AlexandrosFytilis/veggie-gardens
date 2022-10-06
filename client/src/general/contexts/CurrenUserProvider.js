@@ -34,6 +34,10 @@ const CurrentUserProvider = ({ children }) => {
     }
     const json = await response.json();
     setVegetables(json.data.vegetables);
+    if (currentUser.lastWateringDay !== json.data.lastWateringDay) {
+      setCurrentUser(json.data);
+    }
+
   }, [currentUser]);
 
   useEffect(() => {
