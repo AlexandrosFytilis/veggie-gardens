@@ -1,35 +1,46 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDeleteVegetable } from "./hooks/useDeleteVegetable.js";
+import { usePlantVegetable } from "./hooks/usePlantVegetable.js";
 
 export const SingleVegetable = ({ item }) => {
   const deleteVegetable = useDeleteVegetable();
-  const [value, setValue] = useState("");
-  console.log(value);
+  const plantVegetable = usePlantVegetable();
+  const [plantedDate, setPlantedDate] = useState((new Date()).toLocaleDateString("en-CA"));
+
+
   return (
     <Wrapper>
       <p>{item.name}</p>
       <p>{item.description}</p>
       <p>{item.id}</p>
-      {item.isPlanted ? (
-        <p>planted</p>
+      {item.datePlanted !== null ? (
+        <p>Planted: {item.datePlanted}</p>
       ) : (
         <div>
           <p>not planted</p>
           <input
             onChange={(e) => {
-              setValue(e.target.value);
+              setPlantedDate(e.target.value);
             }}
             type="date"
             id="start"
             name="trip-start"
-            value={value}
+            value={plantedDate}
             min="2022-10-01"
-            max="2022-12-31"></input>
-          <button>Plant</button>
+            max="2022-12-31"
+          />
+          <button
+            onClick={() => {
+              if (plantedDate.length > 0) {
+                plantVegetable(item, plantedDate);
+              } else {
+                alert("error");
+              }
+            }}
+          >Plant</button>
         </div>
       )}
-      <p>{item.isPlanted}</p>
       <button
         onClick={() => { deleteVegetable(item.id); }
         }>X</button>

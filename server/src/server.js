@@ -9,7 +9,7 @@ import { createSession } from "./handlers/createSession.js";
 import dotenv from "dotenv";
 import { addVegetable } from "./handlers/addVegetable.js";
 import { deleteVegetable } from "./handlers/deleteVegetable.js";
-import { updateVegetable } from "./handlers/updateVegetables.js";
+import { updateVegetable } from "./handlers/updateVegetable.js";
 
 
 const PORT = 8000;
@@ -31,7 +31,7 @@ client.connect()
       .post("/sessions", createSession)
       .post("/users/:email/vegetables", addVegetable)
       .delete("/users/:email/vegetables/:id", deleteVegetable)
-      .patch("/users/:email/vegetables/:id", updateVegetable)
+      .put("/users/:email/vegetables/:id", updateVegetable)
 
       .listen(PORT, () => {
         console.log(`Server launched on port ${PORT}`);

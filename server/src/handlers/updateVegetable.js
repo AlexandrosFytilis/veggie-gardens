@@ -9,7 +9,7 @@ export const updateVegetable = async (request, response) => {
       vegetables: { $elemMatch: { id: request.params.id }}
     },
     { 
-      $set:  { "vegetables.$.isPlanted": request.body.isPlanted }
+      $set: { "vegetables.$": request.body }
     }
   );
 
