@@ -15,14 +15,14 @@ export const Header = () => {
       <Link to={"/search"}>
         <p>Wiki</p>
       </Link>
-      <button
+      <LogoutButton
         onClick={() => {
           persistCurrentUser(null);
           navigate("/login");
         }}
       >
         Logout
-      </button>
+      </LogoutButton>
     </StyledHeader>
   );
 };
@@ -33,4 +33,11 @@ const StyledHeader = styled.header`
 
   display: flex;
   justify-content: space-between;
+
+  position: sticky;
+  top: 0px;
+`;
+
+const LogoutButton = styled.button`
+  margin-right: 15px;
 `;

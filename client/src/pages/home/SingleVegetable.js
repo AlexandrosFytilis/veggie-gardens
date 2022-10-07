@@ -12,8 +12,6 @@ export const SingleVegetable = ({ item }) => {
   return (
     <Wrapper>
       <p>{item.name}</p>
-      <p>{item.description}</p>
-      <p>{item.id}</p>
       {item.datePlanted !== null ? (
         <p>Planted: {item.datePlanted}</p>
       ) : (
