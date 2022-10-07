@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const SearchResult = ({ item }) => {
 
   return (
-    <Link to={"/"}>
+    <Link to={`/${item.name}`}>
       <Wrapper>
         <Image src={item.img}></Image>
         <h2>{item.name}</h2>

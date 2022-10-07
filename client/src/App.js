@@ -5,6 +5,7 @@ import { Login } from "./pages/login/Login.js";
 import { SignUp } from "./pages/signup/SignUp.js";
 import GlobalStyles from "./GlobalStyles.js";
 import { Search } from "./pages/Search/Search.js";
+import { Information } from "./pages/Information/Information.js";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/:item" element={<Information />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,7 +1,7 @@
 export const vegetableData = [
   {
     name: "Carrot",
-    description: "This is a Carrot",
+    description: "The carrot (Daucus carota subsp. sativus) is a root vegetable, typically orange in color, though purple, black, red, white, and yellow cultivars exist, all of which are domesticated forms of the wild carrot, Daucus carota, native to Europe and Southwestern Asia. The plant probably originated in Persia and was originally cultivated for its leaves and seeds. The most commonly eaten part of the plant is the taproot, although the stems and leaves are also eaten. The domestic carrot has been selectively bred for its enlarged, more palatable, less woody-textured taproot.The carrot is a biennial plant in the umbellifer family, Apiaceae. At first, it grows a rosette of leaves while building up the enlarged taproot. Fast-growing cultivars mature within three months (90 days) of sowing the seed, while slower-maturing cultivars need a month longer (120 days). The roots contain high quantities of alpha- and beta-carotene, and are a good source of vitamin A, vitamin K, and vitamin B6.The United Nations Food and Agriculture Organization (FAO) reports that world production of carrots and turnips (these plants are combined by the FAO) for 2018 was 40 million tonnes, with 45% of the world total grown in China. Carrots are commonly consumed raw or cooked in various cuisines.",
     img: "https://media.istockphoto.com/photos/carrots-picture-id92026520?b=1&k=20&m=92026520&s=612x612&w=0&h=ffjqUSiKMk0d314KQdHsX77b9-7UmiJle_uUGSBHhrM=",
   },
   {
