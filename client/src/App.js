@@ -4,6 +4,7 @@ import { Home } from "./pages/home/Home.js";
 import { Login } from "./pages/login/Login.js";
 import { SignUp } from "./pages/signup/SignUp.js";
 import GlobalStyles from "./GlobalStyles.js";
+import { Search } from "./pages/Search/Search.js";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );

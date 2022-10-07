@@ -18,7 +18,7 @@ export const WateringTracker = () => {
           <div>
             <p>last Time Watered: {currentUser.lastWateringDay}</p>
             {result !== 0 ? (
-              <p>{result} days since last time garden was watered.</p>
+              <p>{result} day(s) since last time garden was watered.</p>
             ) : (
               <p>Garden was watered today!</p>
             )}

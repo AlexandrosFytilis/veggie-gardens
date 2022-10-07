@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CurrentUserContext } from "../contexts/CurrenUserProvider.js";
 
@@ -9,7 +9,12 @@ export const Header = () => {
   return (
     <StyledHeader>
       <p>Welcome {currentUser.userName}</p>
-      <p>Logo</p>
+      <Link to={"/"}>
+        <p>Logo</p>
+      </Link>
+      <Link to={"/search"}>
+        <p>Wiki</p>
+      </Link>
       <button
         onClick={() => {
           persistCurrentUser(null);
