@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DropDownOption } from "./DropDownOption.js";
-import { vegetableData } from "../../general/utils/vegatableData.js";
+import { vegetableData } from "../../../general/utils/vegatableData.js";
 
 export const Dropdown = () => {
   const [selected, setSelected] = useState(false);

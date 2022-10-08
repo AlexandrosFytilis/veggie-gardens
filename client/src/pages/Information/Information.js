@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Header } from "../../general/components/Header.js";
 import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const Information = () => {
@@ -9,16 +8,13 @@ export const Information = () => {
   const itemInfo = vegetableData.find((searchedItem) => searchedItem.name === item);
 
   return (
-    <>
-      <Header />
-      <InformationContainer>
-        <Image src={itemInfo.img}></Image>
-        <div>
-          <h2>{itemInfo.name}</h2>
-          <p>{itemInfo.description}</p>
-        </div>
-      </InformationContainer>
-    </>
+    <InformationContainer>
+      <Image src={itemInfo.img}></Image>
+      <div>
+        <h2>{itemInfo.name}</h2>
+        <p>{itemInfo.description}</p>
+      </div>
+    </InformationContainer>
   );
 };
 const InformationContainer = styled.div`

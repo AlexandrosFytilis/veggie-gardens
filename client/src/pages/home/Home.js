@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Header } from "../../general/components/Header.js";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
-import { SideBar } from "./Sidebar.js";
-import { VegetableFeed } from "./VegetableFeed.js";
+import { SideBar } from "./components/Sidebar.js";
+import { VegetableFeed } from "./components/VegetableFeed.js";
 
 export const Home = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -18,7 +17,6 @@ export const Home = () => {
 
   return currentUser && (
     <Wrapper>
-      <Header />
       <HomeContainer>
         <SideBar />
         <VegetableFeed />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Header } from "../../general/components/Header.js";
 import { vegetableData } from "../../general/utils/vegatableData.js";
 import { SearchResult } from "./SearchResults.js";
 
@@ -12,38 +11,35 @@ export const Search = () => {
   };
 
   return (
-    <>
-      <Header />
-      <SearchContainer>
-        <Block />
-        <DropDownContainer>
-          <InputConainer>
-            <Input
-              value={value}
-              placeholder="Search a Vegetable"
-              onChange={(e) => {
-                setValue(e.target.value);
-              }}
-            />
-          </InputConainer>
-          <div>
-            {vegetableData.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())).map((item, index) => (
-              <div key={index}>
-                <SearchResult item={item}/>
-              </div>
-            ))}
-            {value.length > 0 && 
+    <SearchContainer>
+      <Block />
+      <DropDownContainer>
+        <InputConainer>
+          <Input
+            value={value}
+            placeholder="Search a Vegetable"
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+          />
+        </InputConainer>
+        <div>
+          {vegetableData.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())).map((item, index) => (
+            <div key={index}>
+              <SearchResult item={item}/>
+            </div>
+          ))}
+          {value.length > 0 && 
               <button
                 onClick={() => reset()}
               >
                 Reset
               </button>
-            }
-          </div>
-        </DropDownContainer>
-        <Block />
-      </SearchContainer>
-    </>
+          }
+        </div>
+      </DropDownContainer>
+      <Block />
+    </SearchContainer>
   );
 };
 

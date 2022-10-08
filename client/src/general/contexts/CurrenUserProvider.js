@@ -3,7 +3,6 @@ import React, { useState, createContext, useCallback, useEffect } from "react";
 export const CurrentUserContext = createContext(null);
 
 const CurrentUserProvider = ({ children }) => {
-  const [vegetables, setVegetables] = useState([]);
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(window.localStorage.getItem("currentUser"))
   );
@@ -17,15 +16,12 @@ const CurrentUserProvider = ({ children }) => {
     }
   };
 
-  const fetchVegetables = useCallback(async () => {
-    let response = null;
-    if (currentUser !== null) {
-      response = await fetch(`/users/${currentUser.email}`);
-    }
-
-    if (response === null) {
+  const fetchCurrentUser = useCallback(async () => {
+    if (!currentUser || !currentUser.email) {
       return;
     }
+
+    const response = await fetch(`/users/${currentUser.email}`);
 
     if (!response.ok) {
       const json = await response.json();
@@ -33,19 +29,17 @@ const CurrentUserProvider = ({ children }) => {
       return;
     }
     const json = await response.json();
-    setVegetables(json.data.vegetables);
-    if (currentUser.lastWateringDay !== json.data.lastWateringDay) {
-      setCurrentUser(json.data);
-    }
+    setCurrentUser(json.data);
 
-  }, [currentUser]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser.email]);
 
   useEffect(() => {
-    fetchVegetables();
-  }, [fetchVegetables]);
+    fetchCurrentUser();
+  }, [fetchCurrentUser]);
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, persistCurrentUser, vegetables, fetchVegetables }}>
+    <CurrentUserContext.Provider value={{ currentUser, persistCurrentUser, vegetables: currentUser.vegetables, fetchCurrentUser }}>
       {children}
     </CurrentUserContext.Provider>
   );

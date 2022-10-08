@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
-import { useUpdateWateringDate } from "./hooks/useUpdateWateringDate.js";
+import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
+import { useUpdateWateringDate } from "../hooks/useUpdateWateringDate.js";
 
 
 export const WateringTracker = () => {

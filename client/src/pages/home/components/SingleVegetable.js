@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDeleteVegetable } from "./hooks/useDeleteVegetable.js";
-import { usePlantVegetable } from "./hooks/usePlantVegetable.js";
+import { useDeleteVegetable } from "../hooks/useDeleteVegetable.js";
+import { usePlantVegetable } from "../hooks/usePlantVegetable.js";
 
 export const SingleVegetable = ({ item }) => {
   const deleteVegetable = useDeleteVegetable();

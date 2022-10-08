@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
 import { SingleVegetable } from "./SingleVegetable.js";
 import { WateringTracker } from "./WateringTracker.js";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAddVegetable } from "./hooks/useAddVegetable.js";
+import { useAddVegetable } from "../hooks/useAddVegetable.js";
 
 export const DropDownOption = ({ item }) => {
   const addVegetable = useAddVegetable();

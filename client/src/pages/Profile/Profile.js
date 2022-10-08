@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { Header } from "../../general/components/Header.js";
 import TextInput from "../../general/components/TextInput.js";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 
@@ -41,32 +40,28 @@ export const Profile = () => {
     return false;
   };
 
-
   return (
-    <>
-      <Header />
-
-      <Wrapper>
-        <Block />
+    <Wrapper>
+      <Block />
+      <div>
         <div>
-          <div>
-            <p>UserName: {currentUser.userName}</p>
-            <p>Email: {currentUser.email}</p>
-            {requestedChange ? (
-              <button
-                onClick={() => setRequestedChange((current) => !current)}
-              >
+          <p>UserName: {currentUser.userName}</p>
+          <p>Email: {currentUser.email}</p>
+          {requestedChange ? (
+            <button
+              onClick={() => setRequestedChange((current) => !current)}
+            >
                 Cancel
-              </button>
-            ) : (
-              <button
-                onClick={() => setRequestedChange((current) => !current)}
-              >
+            </button>
+          ) : (
+            <button
+              onClick={() => setRequestedChange((current) => !current)}
+            >
                 Change Information?
-              </button>
-            )}
-          </div>
-          {requestedChange &&
+            </button>
+          )}
+        </div>
+        {requestedChange &&
             <div>
               <form>
                 <TextInput setForm={setUpdateInfo} label="Username" type="text" formKey="userName" />
@@ -79,11 +74,10 @@ export const Profile = () => {
                     disabled={isChangeRequestValid(updateInfo)}
                     onClick={async (e) => {
                       e.preventDefault();
-                      if (updateInfo.password !== updateInfo.confirmPassword) {
-                        alert("passwords don't match");
-                      } else {
-                        await "nothing";
-                      }
+                      const validadUpdateInfo = Object.fromEntries(
+                        Object.entries(updateInfo).filter(([_, value]) => value.length > 0)
+                      );
+                      console.log(validadUpdateInfo);
                     }}
                   >
                     Submit
@@ -91,13 +85,10 @@ export const Profile = () => {
                 </div>
               </form>
             </div>
-          }
-        </div>
-
-        <Block />
-      </Wrapper>
-
-    </>
+        }
+      </div>
+      <Block />
+    </Wrapper>
   );
 };
 
