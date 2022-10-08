@@ -6,6 +6,7 @@ import { CurrentUserContext } from "../contexts/CurrenUserProvider.js";
 export const Header = () => {
   const { currentUser, persistCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
+
   return (
     <StyledHeader>
       <p>Welcome

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
+import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { useLogin } from "./hooks/useLogin.js";
 
 const isFormValid = (form) => {
@@ -14,11 +16,20 @@ const isFormValid = (form) => {
 };
 
 export const Login = () => {
+  const { email } = useContext(CurrentUserContext);
+  const navigate = useNavigate();
+  const login = useLogin();
+
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: ""
   });
-  const login = useLogin();
+
+  useEffect(() => {
+    if (email !== null) {
+      navigate("/");
+    }
+  }, [email, navigate]);
 
   return (
     <Wrapper>

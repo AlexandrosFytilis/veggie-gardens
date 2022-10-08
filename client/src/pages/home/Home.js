@@ -1,21 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { SideBar } from "./components/Sidebar.js";
 import { VegetableFeed } from "./components/VegetableFeed.js";
 
 export const Home = () => {
-  const { currentUser } = useContext(CurrentUserContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (currentUser === null) {
-      navigate("/login");
-    }
-  }, [currentUser, navigate]);
-
-  return currentUser && (
+  return (
     <Wrapper>
       <HomeContainer>
         <SideBar />
