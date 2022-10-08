@@ -17,7 +17,7 @@ const CurrentUserProvider = ({ children }) => {
   };
 
   const fetchCurrentUser = useCallback(async () => {
-    if (!currentUser || !currentUser.email) {
+    if (!currentUser?.email) {
       return;
     }
 
@@ -29,17 +29,17 @@ const CurrentUserProvider = ({ children }) => {
       return;
     }
     const json = await response.json();
-    setCurrentUser(json.data);
+    persistCurrentUser(json.data);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser.email]);
+  }, [currentUser?.email]);
 
   useEffect(() => {
     fetchCurrentUser();
   }, [fetchCurrentUser]);
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, persistCurrentUser, vegetables: currentUser.vegetables, fetchCurrentUser }}>
+    <CurrentUserContext.Provider value={{ currentUser, persistCurrentUser, vegetables: currentUser?.vegetables, fetchCurrentUser }}>
       {children}
     </CurrentUserContext.Provider>
   );

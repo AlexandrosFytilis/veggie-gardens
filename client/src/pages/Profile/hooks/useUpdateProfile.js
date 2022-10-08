@@ -16,6 +16,6 @@ export const useUpdateProfile = () => {
       alert(json.message);
       return;
     }
-    fetchCurrentUser();
+    await fetchCurrentUser();
   }, [currentUser.email, fetchCurrentUser]);
 };

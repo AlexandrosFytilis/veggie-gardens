@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider
 import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
 export const useAddVegetable = () => {
-  const { currentUser, fetchVegetables } = useContext(CurrentUserContext);
+  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
 
   return useCallback(async (vegetable) => {
     const response = await fetch(`/users/${currentUser.email}/vegetables`, {
@@ -16,6 +16,6 @@ export const useAddVegetable = () => {
       alert(json.message);
       return;
     }
-    fetchVegetables();
-  }, [currentUser.email, fetchVegetables]);
+    fetchCurrentUser();
+  }, [currentUser.email, fetchCurrentUser]);
 };

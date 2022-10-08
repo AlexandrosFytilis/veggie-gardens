@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
-import { useUpdateWateringDate } from "../hooks/useUpdateWateringDate.js";
+import { useUpdateProfile } from "../../profile/hooks/useUpdateProfile.js";
 
 
 export const WateringTracker = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleDateString("en-CA");
   const result = (Date.parse(currentDate) - Date.parse(currentUser.lastWateringDay)) / 24 / 60 / 60 / 1000;
-  const waterPlants = useUpdateWateringDate();
+  const updateProfile = useUpdateProfile();
 
   return (
     <Wrapper>
@@ -27,7 +27,7 @@ export const WateringTracker = () => {
       </div>
       <button
         disabled={result === 0 ? true : false}
-        onClick={() => waterPlants(currentDate)}
+        onClick={() => updateProfile({lastWateringDay: currentDate})}
       >Water Garden</button>
     </Wrapper>
   );

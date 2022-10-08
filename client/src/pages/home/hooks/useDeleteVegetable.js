@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider
 import { DEFAULT_HEADERS } from "../../../general/utils/network.js";
 
 export const useDeleteVegetable = () => {
-  const { currentUser, fetchVegetables } = useContext(CurrentUserContext);
+  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
 
   return useCallback(async (id) => {
     const response = await fetch(`/users/${currentUser.email}/vegetables/${id}`, {
@@ -16,6 +16,6 @@ export const useDeleteVegetable = () => {
       alert(json.message);
       return;
     }
-    fetchVegetables();
-  }, [currentUser.email, fetchVegetables]);
+    fetchCurrentUser();
+  }, [currentUser.email, fetchCurrentUser]);
 };
