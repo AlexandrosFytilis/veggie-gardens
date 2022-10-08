@@ -6,10 +6,10 @@ export const Dropdown = () => {
   const [selected, setSelected] = useState(false);
   const [value, setValue] = useState("");
 
-  const reset = () => {
-    setSelected(false);
-    setValue("");
-  };
+  // const reset = () => {
+  //   setSelected(false);
+  //   setValue("");
+  // };
 
   return (
     <div>
@@ -28,7 +28,7 @@ export const Dropdown = () => {
         <div>
           {vegetableData.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())).map((item, index) => (
             <div key={index}>
-              <DropDownOption item={item} reset={reset}/>
+              <DropDownOption item={item} />
             </div>
           ))}
         </div>

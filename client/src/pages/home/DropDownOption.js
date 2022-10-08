@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAddVegetable } from "./hooks/useAddVegetable.js";
 
-export const DropDownOption = ({ item, reset }) => {
+export const DropDownOption = ({ item }) => {
   const addVegetable = useAddVegetable();
   const navigate = useNavigate();
 

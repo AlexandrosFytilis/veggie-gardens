@@ -8,7 +8,11 @@ export const Header = () => {
   const navigate = useNavigate();
   return (
     <StyledHeader>
-      <p>Welcome {currentUser.userName}</p>
+      <p>Welcome
+        <Link to={"/profile"}>
+          {currentUser.userName}
+        </Link>
+      </p>
       <Link to={"/"}>
         <p>Logo</p>
       </Link>

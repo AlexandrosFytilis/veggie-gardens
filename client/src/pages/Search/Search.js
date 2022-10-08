@@ -12,7 +12,7 @@ export const Search = () => {
   };
 
   return (
-    <Wrapper>
+    <>
       <Header />
       <SearchContainer>
         <Block />
@@ -43,17 +43,9 @@ export const Search = () => {
         </DropDownContainer>
         <Block />
       </SearchContainer>
-    </Wrapper>
+    </>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  min-height: 100vh;
-  max-width: 100vw;
-`;
 
 const SearchContainer = styled.div`
   display: flex;

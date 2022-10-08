@@ -2,8 +2,20 @@ import React, { useState } from "react";
 import TextInput from "../../general/components/TextInput.js";
 import useSignUp from "./hooks/useSignUp.js";
 
-const isFormIncomplete = (form) => {
-  return Object.values(form).some((value) => value.length === 0);
+const isFormValid = (form) => {
+  if (form.userName < 5) {
+    return true;
+  }
+  if (!form.email.match(/^.+@.+\..+$/)) {
+    return true;
+  }
+  if (form.password.length < 5) {
+    return true;
+  }
+  if (form.password !== form.confirmPassword) {
+    return true;
+  }
+  return false;
 };
 
 export const SignUp = () => {
@@ -26,7 +38,7 @@ export const SignUp = () => {
         <div>
           <button
             type="submit"
-            disabled={isFormIncomplete(signUpInfo)}
+            disabled={isFormValid(signUpInfo)}
             onClick={async (e) => {
               e.preventDefault();
               if (signUpInfo.password !== signUpInfo.confirmPassword) {
