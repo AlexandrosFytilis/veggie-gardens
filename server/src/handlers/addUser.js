@@ -5,7 +5,12 @@ export const addUser = async (request, response) => {
 
   const requestedEmail = request.body.email;
 
-  if (await usersCollection.findOne({email: requestedEmail}) !== null) {
+  if (!requestedEmail) {
+    response.status(400).send({data: requestedEmail, message: "Email not provided"});
+  }
+
+  const existingUser = await usersCollection.findOne({email: requestedEmail});
+  if (existingUser) {
     response.status(409).send({data: requestedEmail, message: "email already used"});
     return;
   }

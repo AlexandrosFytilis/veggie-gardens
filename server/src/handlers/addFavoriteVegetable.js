@@ -10,7 +10,6 @@ export const addFavoriteVegetable = async (request, response) => {
   }
 
   const vegetableName = request.body.name;
-
   const user = await usersCollection.findOne({email});
 
   if (!user) {
@@ -36,14 +35,14 @@ export const addFavoriteVegetable = async (request, response) => {
   );
 
   if (result.matchedCount < 1) {
-    response.status(404).send({data: email, message: "User not found"});
+    response.status(404).send({data: user, message: "User not found"});
     return;
   }
 
   if (result.modifiedCount !== 1) {
-    response.status(500).send({status: 500, message: "An unknown error has occurred"});
+    response.status(500).send({data: request.body, message: "An unknown error has occurred"});
     return;
   }
 
-  response.status(201).send({status: 201, data: request.body});
+  response.status(201).send({data: request.body});
 };

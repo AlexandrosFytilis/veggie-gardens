@@ -3,15 +3,22 @@ import { client } from "../server.js";
 export const deleteFavoriteVegetable = async (request, response) => {
   const usersCollection = client.db("final_project").collection("users");
 
-  const requestedEmail = request.body.email;
+  const email = request.params.email;
 
-  if (await usersCollection.findOne({email: requestedEmail}) !== null) {
-    response.status(409).send({data: requestedEmail, message: "email not found"});
+  if (!email) {
+    response.status(400).send({data: email, message: "Email not provided"});
+  }
+
+  const vegetableName = request.body.name;
+  const user = await usersCollection.findOne({email});
+
+  if (!user) {
+    response.status(404).send({data: email, message: "user not found"});
     return;
   }
 
-  if (await usersCollection.findOne({favoriteVegetables: request.body.name}) === null) {
-    response.status(409).send({data: request.body.name, message: "vegetable is not in favorites"});
+  if (await usersCollection.findOne({favoriteVegetables: vegetableName}) === null) {
+    response.status(409).send({data: vegetableName, message: "vegetable is not in favorites"});
     return;
   }
 
@@ -20,19 +27,19 @@ export const deleteFavoriteVegetable = async (request, response) => {
       email: request.params.email
     },
     { 
-      $pull: { "favoriteVegetables": request.body.name }
+      $pull: { favoriteVegetables: vegetableName }
     }
   );
 
   if (result.matchedCount < 1) {
-    response.status(404).send({status: 404, message: "User not found"});
+    response.status(404).send({data: user, message: "User not found"});
     return;
   }
 
   if (result.modifiedCount !== 1) {
-    response.status(500).send({status: 500, message: "An unknown error has occurred"});
+    response.status(500).send({data: request.body, message: "An unknown error has occurred"});
     return;
   }
 
-  response.status(201).send({status: 201, data: request.body});
+  response.status(201).send({data: request.body});
 };
