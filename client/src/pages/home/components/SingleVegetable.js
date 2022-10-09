@@ -7,13 +7,29 @@ export const SingleVegetable = ({ item }) => {
   const deleteVegetable = useDeleteVegetable();
   const plantVegetable = usePlantVegetable();
   const [plantedDate, setPlantedDate] = useState((new Date()).toLocaleDateString("en-CA"));
+  const currentDate = new Date().toLocaleDateString("en-CA");
+
+  const daysBeforeHarvest = item.harvest - ((Date.parse(currentDate) - Date.parse(item.datePlanted)) / 24 / 60 / 60 / 1000);
+  const daysFullyGrown = item.growth - ((Date.parse(currentDate) - Date.parse(item.datePlanted)) / 24 / 60 / 60 / 1000);
 
 
   return (
     <Wrapper>
       <p>{item.name}</p>
       {item.datePlanted !== null ? (
-        <p>Planted: {item.datePlanted}</p>
+        <div>
+          <p>Planted: {item.datePlanted}</p>
+          {daysFullyGrown > 0 ? (
+            <p>Plant fully grown in approximately {daysFullyGrown} days</p>
+          ) : (
+            <p>Plant fully grown!</p>
+          )}
+          {daysBeforeHarvest > 0 ? (
+            <p>First available harvest in approximately {daysBeforeHarvest} days</p>
+          ) : (
+            <p>Harvesting Time!</p>
+          )}
+        </div>
       ) : (
         <div>
           <p>not planted</p>
