@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { useAddFavoriteVegetable } from "../../general/hooks/useAddFavoriteVegetable.js";
+import { useDeleteFavoriteVegetable } from "../../general/hooks/useDeleteFavoriteVegetable.js";
 import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const Information = () => {
@@ -11,6 +12,7 @@ export const Information = () => {
   const { item } = useParams();
   const itemInfo = vegetableData.find((searchedItem) => searchedItem.name === item);
   const addFavoriteVegetable = useAddFavoriteVegetable();
+  const deleteFavoriteVegetable = useDeleteFavoriteVegetable();
 
   return (
     <InformationContainer>
@@ -29,7 +31,7 @@ export const Information = () => {
         </button>
       ) : (
         <button
-          onClick={() => addFavoriteVegetable(itemInfo.name)}
+          onClick={() => deleteFavoriteVegetable(itemInfo.name)}
         >
           Remove from Favorites
         </button>
