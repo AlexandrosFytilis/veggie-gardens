@@ -13,7 +13,8 @@ const useSignUp = () => {
         userName: userInfo.userName,
         email: userInfo.email,
         password: userInfo.password,
-        lastWateringDay: null
+        lastWateringDay: null,
+        favoriteVegetables: []
       })
     });
     const json = await response.json();

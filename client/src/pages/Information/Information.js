@@ -13,7 +13,10 @@ export const Information = () => {
       <div>
         <h2>{itemInfo.name}</h2>
         <p>{itemInfo.description}</p>
+        <p>Average growth time: {itemInfo.growth} days</p>
+        <p>Average time before first harvest: {itemInfo.harvest} Days</p>
       </div>
+      <button>Favorite</button>
     </InformationContainer>
   );
 };
