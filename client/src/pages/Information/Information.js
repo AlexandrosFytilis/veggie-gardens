@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { useAddFavoriteVegetable } from "../../general/hooks/useAddFavoriteVegetable.js";
 import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const Information = () => {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const { item } = useParams();
   const itemInfo = vegetableData.find((searchedItem) => searchedItem.name === item);
+  const addFavoriteVegetable = useAddFavoriteVegetable();
 
   return (
     <InformationContainer>
@@ -16,7 +21,19 @@ export const Information = () => {
         <p>Average growth time: {itemInfo.growth} days</p>
         <p>Average time before first harvest: {itemInfo.harvest} Days</p>
       </div>
-      <button>Favorite</button>
+      {!currentUser.favoriteVegetables.includes(itemInfo.name) ? (
+        <button
+          onClick={() => addFavoriteVegetable(itemInfo.name)}
+        >
+          Favorite
+        </button>
+      ) : (
+        <button
+          onClick={() => addFavoriteVegetable(itemInfo.name)}
+        >
+          Remove from Favorites
+        </button>
+      )}
     </InformationContainer>
   );
 };

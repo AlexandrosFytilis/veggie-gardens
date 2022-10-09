@@ -6,7 +6,7 @@ export const addFavoriteVegetable = async (request, response) => {
   const requestedEmail = request.body.email;
 
   if (await usersCollection.findOne({email: requestedEmail}) !== null) {
-    response.status(409).send({data: requestedEmail, message: "email already used"});
+    response.status(409).send({data: requestedEmail, message: "email not found"});
     return;
   }
 
