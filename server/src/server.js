@@ -12,6 +12,7 @@ import { deleteVegetable } from "./handlers/deleteVegetable.js";
 import { updateVegetable } from "./handlers/updateVegetable.js";
 import { updateUser } from "./handlers/updateUser.js";
 import { addFavoriteVegetable } from "./handlers/addFavoriteVegetable.js";
+import { deleteFavoriteVegetable } from "./handlers/deleteFavoriteVegetable.js";
 
 
 const PORT = 8000;
@@ -35,7 +36,7 @@ client.connect()
       .post("/users/:email/vegetables", addVegetable)
       .delete("/users/:email/vegetables/:id", deleteVegetable)
       .post("/users/:email/favorite-vegetables", addFavoriteVegetable)
-      // .delete("/users/:email/favorite-vegetables", deleteFavoriteVegetable)
+      .delete("/users/:email/favorite-vegetables", deleteFavoriteVegetable)
       .put("/users/:email/vegetables/:id", updateVegetable)
 
       .listen(PORT, () => {
