@@ -54,7 +54,7 @@ export const vegetableData = [
     img: "https://media.istockphoto.com/photos/tomato-isolated-tomato-on-white-background-with-clipping-path-full-picture-id941825808?b=1&k=20&m=941825808&s=612x612&w=0&h=vqOse4sHymYRm5a3JZaZ9W6tMeSJIM5qkK0l4qus014=",
     harvest: 60,
     growth: 30
-  }
+  },
 ];
 
 // images from https://www.pexels.com/
