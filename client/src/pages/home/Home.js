@@ -9,6 +9,7 @@ export const Home = () => {
       <HomeContainer>
         <SideBar />
         <VegetableFeed />
+        <Block />
       </HomeContainer>
     </Wrapper>
   );
@@ -24,4 +25,10 @@ const Wrapper = styled.div`
 
 const HomeContainer = styled.div`
   display: flex;
+`;
+
+const Block = styled.div`
+  background: gray;
+  width: 30%;
+  min-height: 95vh;
 `;
