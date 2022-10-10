@@ -33,34 +33,96 @@ export const Login = () => {
 
   return (
     <Wrapper>
-      <Form>
-        <h2>Login</h2>
-        <div>
-          <TextInput setForm={setLoginInfo} label="Email" type="email" formKey="email" />
-          <TextInput setForm={setLoginInfo} label="Password" type="password" formKey="password" />
-          <button
-            type="submit"
-            disabled={!isFormValid(loginInfo)}
-            onClick={async (e) => {
-              e.preventDefault();
-              login(loginInfo);
-            }}
-          >
-            Submit
-          </button>
+      <FormContainer>
+        <Form>
+          <LoginContainer>
+            <Title>Veggie Gardens </Title>
+            <StyledPara>Log in to your account</StyledPara>
+            <TextInput setForm={setLoginInfo} label="Email" type="email" formKey="email" />
+            <TextInput setForm={setLoginInfo} label="Password" type="password" formKey="password" />
+            <Button
+              type="submit"
+              disabled={!isFormValid(loginInfo)}
+              onClick={async (e) => {
+                e.preventDefault();
+                login(loginInfo);
+              }}
+            >
+              Submit
+            </Button>
+          </LoginContainer>
           <div>
-            <p><a href="/signup">sign-up</a></p>
+            <StyledPara>
+              Don&apos;t have an Account?&nbsp; 
+              <a href="/signup">sign Up</a>
+            </StyledPara>
           </div>
-        </div>
-      </Form>
+        </Form>
+      </FormContainer>
+      <WelcomePageContainer>
+
+      </WelcomePageContainer>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  
+  height: 100%;
 `;
+
+const FormContainer = styled.div`
+  width: 25%;
+  background: red;
+  height: 100%;
+  padding: 30px;
+`;
+
+const WelcomePageContainer = styled.div`
+  width: 75%;
+  background: blue;
+`;
+
+const LoginContainer = styled.div`
+  margin-top: 20px;
+  padding: 20px 0 50px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border-bottom: solid 1px black;
+`;
+
+const Title = styled.h1`
+  padding-bottom: 40px;
+
+  font-size: 48px;
+`;
+
+const StyledPara = styled.p`
+  font-size: 24px;
+
+  & > a {
+    text-decoration: none;
+  }
+`;
+
+const Button = styled.button`
+  margin-top: 30px;
+  font-size: 28px;
+
+  &:disabled {
+    
+  }
+`;
+
