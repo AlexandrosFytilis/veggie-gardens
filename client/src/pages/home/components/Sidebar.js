@@ -15,4 +15,6 @@ const Wrapper = styled.div`
   background: gray;
   width: 20vw;
   min-height: 95vh;
+
+  padding: 20px;
 `;

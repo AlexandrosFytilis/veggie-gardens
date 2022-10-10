@@ -2,16 +2,12 @@ import React, { useContext, useState } from "react";
 import { DropDownOption } from "./DropDownOption.js";
 import { vegetableData } from "../../../general/utils/vegatableData.js";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
+import styled from "styled-components";
 
 export const Dropdown = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const [selected, setSelected] = useState(false);
   const [value, setValue] = useState("");
-
-  // const reset = () => {
-  //   setSelected(false);
-  //   setValue("");
-  // };
 
   const compare = (first, second) => {
     const isFirstInFavoriteVegetables = currentUser.favoriteVegetables.includes(first.name);
@@ -27,10 +23,17 @@ export const Dropdown = () => {
   };
 
   return (
-    <div>
-      <div>
-        <div>Search:</div>
-        <input
+    <Wrapper>
+      <InputContainer>
+        {value.length > 0 && (
+          <ClearButton
+            onClick={() => setValue("")}
+          >
+            X
+          </ClearButton>
+        )}
+
+        <Input
           value={value}
           placeholder="Add a Vegetable"
           onFocus={() => setSelected(true)}
@@ -38,11 +41,12 @@ export const Dropdown = () => {
             setValue(e.target.value);
           }}
         />
-      </div>
-      {selected &&
+      </InputContainer>
+      {
+        selected &&
         <div>
           {vegetableData
-            .filter((item) => item.name.toLowerCase() .includes(value.toLowerCase()))
+            .filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
             .sort(compare)
             .map((item, index) => (
               index < 10 &&
@@ -50,8 +54,53 @@ export const Dropdown = () => {
                 <DropDownOption item={item} />
               </div>
             ))}
+          <CloseButton
+            onClick={() => setSelected(false)}
+          >
+            ^
+          </CloseButton>
         </div>
+
       }
-    </div>
+    </Wrapper >
   );
 };
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
+
+const InputContainer = styled.div`
+  position: relative;
+`;
+
+const ClearButton = styled.button`
+  position: absolute;
+  top: 11px;
+
+  background: none;
+  border: none;
+
+  color: gray;
+  border-right: solid 2px gray;
+
+  font-size: 20px;
+`;
+
+const Input = styled.input`
+  padding-left: 35px;
+
+  border: solid 2px black;
+`;
+
+const CloseButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 25px;
+
+  padding-top: 10px;
+  border: solid 2px black;
+`;
