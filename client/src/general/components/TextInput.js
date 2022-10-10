@@ -31,7 +31,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  width: 85%;
+  width: 100%;
 
   box-sizing: border-box;
   margin-top: 5px;

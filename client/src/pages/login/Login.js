@@ -51,16 +51,16 @@ export const Login = () => {
               Submit
             </Button>
           </LoginContainer>
-          <div>
+          <>
             <StyledPara>
               Don&apos;t have an Account?&nbsp; 
               <a href="/signup">sign Up</a>
             </StyledPara>
-          </div>
+          </>
         </Form>
       </FormContainer>
       <WelcomePageContainer>
-
+        <WelcomeMessage>Setup and Organize your dream garden!</WelcomeMessage>
       </WelcomePageContainer>
     </Wrapper>
   );
@@ -92,9 +92,19 @@ const WelcomePageContainer = styled.div`
   background: blue;
 `;
 
+const WelcomeMessage = styled.p`
+  font-size: 70px;
+  font-weight: bold;
+
+  margin-top: 60px;
+  padding: 40px;
+`;
+
 const LoginContainer = styled.div`
   margin-top: 20px;
   padding: 20px 0 50px 0;
+
+  width: 85%;
 
   display: flex;
   flex-direction: column;
@@ -106,7 +116,7 @@ const LoginContainer = styled.div`
 const Title = styled.h1`
   padding-bottom: 40px;
 
-  font-size: 48px;
+  font-size: 46px;
 `;
 
 const StyledPara = styled.p`
