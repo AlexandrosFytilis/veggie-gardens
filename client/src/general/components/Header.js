@@ -33,6 +33,8 @@ export const Header = () => {
 };
 
 const StyledHeader = styled.header`
+  z-index: 2;
+
   height: 5vh;
   background: green;
 

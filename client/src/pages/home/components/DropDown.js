@@ -68,6 +68,8 @@ export const Dropdown = () => {
 
 const Wrapper = styled.div`
   width: 100%;
+  position: sticky;
+  top: 70px;
 `;
 
 const InputContainer = styled.div`

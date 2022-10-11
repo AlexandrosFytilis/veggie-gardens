@@ -15,36 +15,50 @@ export const SingleVegetable = ({ item }) => {
 
   return (
     <Wrapper>
-      <p>{item.name}</p>
       {item.datePlanted !== null ? (
-        <div>
-          <p>Planted: {item.datePlanted}</p>
-          {daysFullyGrown > 0 ? (
-            <p>Plant fully grown in approximately {daysFullyGrown} days</p>
-          ) : (
-            <p>Plant fully grown!</p>
-          )}
-          {daysBeforeHarvest > 0 ? (
-            <p>First available harvest in approximately {daysBeforeHarvest} days</p>
-          ) : (
-            <p>Harvesting Time!</p>
-          )}
-        </div>
+        <VegetableContainer>
+          <Image src={item.img}></Image>
+          <DescriptionContainer>
+            <VegetableName><Span>{item.name}</Span></VegetableName>
+            <Para><Span>Planted:</Span> {item.datePlanted}</Para>
+            {daysFullyGrown > 0 ? (
+              <Para>Plant fully grown in approximately: {daysFullyGrown} days</Para>
+            ) : (
+              <Para>Plant fully grown!</Para>
+            )}
+            {daysBeforeHarvest > 0 ? (
+              <Para>First available harvest in approximately: {daysBeforeHarvest} days</Para>
+            ) : (
+              <Para>Harvesting Time!</Para>
+            )}
+          </DescriptionContainer>
+        </VegetableContainer>
       ) : (
-        <div>
-          <p>not planted</p>
-          <input
-            onChange={(e) => {
-              setPlantedDate(e.target.value);
-            }}
-            type="date"
-            id="start"
-            name="trip-start"
-            value={plantedDate}
-            min="2022-10-01"
-            max="2022-12-31"
-          />
-          <button
+        <VegetableContainer>
+          <Image src={item.img}></Image>
+          <DescriptionContainer>
+            <VegetableName><Span>{item.name}</Span></VegetableName>
+            <Para><Span>not planted*</Span></Para>
+            <Input
+              onChange={(e) => {
+                setPlantedDate(e.target.value);
+              }}
+              type="date"
+              id="start"
+              name="trip-start"
+              value={plantedDate}
+              min="2022-09-01"
+              max="2022-12-31"
+            />
+          </DescriptionContainer>
+        </VegetableContainer>
+      )}
+      <ButtonsContainer>
+        <Button
+          onClick={() => { deleteVegetable(item.id); }
+          }>Remove</Button>
+        {item.datePlanted === null && (
+          <Button
             onClick={() => {
               if (plantedDate.length > 0) {
                 plantVegetable(item, plantedDate);
@@ -52,16 +66,70 @@ export const SingleVegetable = ({ item }) => {
                 alert("error");
               }
             }}
-          >Plant</button>
-        </div>
-      )}
-      <button
-        onClick={() => { deleteVegetable(item.id); }
-        }>X</button>
+          >Plant</Button>
+        )}
+      </ButtonsContainer>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   border-bottom: solid black 1px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+  height: 12vh;
+
+  background: white;
+`;
+
+const VegetableContainer = styled.div`
+  display: flex;
+`;
+
+const Image = styled.img`
+  width: 100px;
+  height: 100px;
+
+  border: solid 2px black;
+`;
+
+const VegetableName = styled.p`
+  font-size: 28px;
+`;
+
+const Para = styled.p`
+  font-size: 20px;
+`;
+
+const DescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  margin-left: 15px;
+`;
+
+const Span = styled.span`
+  font-weight: bold;
+`;
+
+const Input = styled.input`
+  width: 160px;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+`;
+
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 150px;
 `;

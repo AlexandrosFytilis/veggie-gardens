@@ -60,7 +60,7 @@ export const WateringTracker = () => {
 const Wrapper = styled.div`
   background: lime;
   width: 100%;
-  height: 100px;
+  height: 11vh;
   border-bottom: solid black 1px;
 
   display: flex;

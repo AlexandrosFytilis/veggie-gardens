@@ -12,6 +12,8 @@ export const SideBar = () => {
 };
 
 const Wrapper = styled.div`
+  position: relative;
+
   background: gray;
   width: 20vw;
   min-height: 95vh;
