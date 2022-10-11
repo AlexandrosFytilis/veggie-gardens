@@ -49,6 +49,7 @@ export const DropDownOption = ({ item }) => {
 
 const Wrapper = styled.div`
   background: blue;
+  width: 100%;
 
   display: flex;
   align-items: center;

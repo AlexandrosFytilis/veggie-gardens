@@ -3,7 +3,6 @@ import { DropDownOption } from "./DropDownOption.js";
 import { vegetableData } from "../../../general/utils/vegatableData.js";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
 import styled from "styled-components";
-import { COLORS } from "../../../general/utils/colors.js";
 
 export const Dropdown = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -70,6 +69,7 @@ export const Dropdown = () => {
 const Wrapper = styled.div`
   width: 100%;
   position: sticky;
+  box-sizing: border-box;
   top: 70px;
 `;
 
@@ -92,6 +92,7 @@ const ClearButton = styled.button`
 
 const Input = styled.input`
   padding-left: 35px;
+  width: 85%;
 
   border: solid 2px black;
 `;

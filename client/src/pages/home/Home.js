@@ -18,7 +18,8 @@ export const Home = () => {
 
 const Wrapper = styled.div`
   min-height: 95vh;
-  background: blue;
+  background: ${COLORS.primaryColor};
+  max-width: 100vw;
 
   display: flex;
   flex-direction: column;
@@ -26,11 +27,12 @@ const Wrapper = styled.div`
 
 const HomeContainer = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const Block = styled.div`
   background: gray;
-  width: 30%;
+  width: 20%;
   min-height: 95vh;
   background: ${COLORS.darkPrimaryColor};
 `;

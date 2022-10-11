@@ -49,7 +49,7 @@ export const vegetableData = [
     yield: "18-22"
   },
   {
-    name: "Buttter Lettuce",
+    name: "Butter Lettuce",
     description: "This is a Buttter Lettuce",
     img: "https://media.istockphoto.com/photos/vegetables-bib-lettuce-isolated-on-white-background-picture-id1091024024?b=1&k=20&m=1091024024&s=612x612&w=0&h=P5b7lpZRAw06t2wpLAORvkb5JgrIZoscWFiYaOfUnJY=",
     harvest: 60,

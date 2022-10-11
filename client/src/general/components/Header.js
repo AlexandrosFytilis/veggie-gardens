@@ -9,12 +9,15 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-      <StyledLink to={"/search"}>
-        <h2>Wiki</h2>
-      </StyledLink>
-      <StyledLink to={"/"}>
-        <Title>Veggie Gardens</Title>
-      </StyledLink>
+      <Container>
+        <StyledLink to={"/search"}>
+          <h2>Wiki</h2>
+        </StyledLink>
+        <Seperation>-</Seperation>
+        <StyledLink to={"/"}>
+          <Title>Veggie Gardens</Title>
+        </StyledLink>
+      </Container>
       <UserContainer>
         <h3>
           <StyledLink to={"/profile"}>
@@ -50,6 +53,10 @@ const StyledHeader = styled.header`
   top: 0px;
 `;
 
+const Container = styled.div`
+  display: flex;
+`;
+
 const LogoutButton = styled.button`
   margin: 0 15px;
 `;
@@ -61,6 +68,10 @@ const StyledLink = styled(Link)`
 
 const Title = styled.h1`
   font-size: 32px;
+`;
+
+const Seperation = styled.h2`
+  margin: 0 30px;
 `;
 
 const UserContainer = styled.div`

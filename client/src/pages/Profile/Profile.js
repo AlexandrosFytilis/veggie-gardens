@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
+import { COLORS } from "../../general/utils/colors.js";
 import { useUpdateProfile } from "./hooks/useUpdateProfile.js";
 
 export const Profile = () => {
@@ -79,12 +80,17 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 100vw;
+
+  background: url("https://www.backyardboss.net/wp-content/uploads/2022/08/Shutterstock_1572494956.jpg");
+  background-size: 100%;
 `;
 
 const Block = styled.div`
   background: gray;
   width: 20%;
   min-height: 95vh;
+
+  background: ${COLORS.darkPrimaryColor};
 `;
 
 const PersonalInfoContainer = styled.div`
@@ -100,7 +106,7 @@ const ContentContainer = styled.div`
   padding: 50px 50px;
 
   border-radius: 15px;
-  background: white;
+  background: ${COLORS.primaryColor};
 `;
 
 const Button = styled.button`

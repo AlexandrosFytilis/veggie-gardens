@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
+import { COLORS } from "../../../general/utils/colors.js";
 import { useUpdateProfile } from "../../profile/hooks/useUpdateProfile.js";
 
 
@@ -68,7 +69,7 @@ const Wrapper = styled.div`
 `;
 
 const WateringWrapper = styled.div`
-  background: red;
+  background: orange;
   width: 100%;
   height: 100px;
   border-bottom: solid black 1px;

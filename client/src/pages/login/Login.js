@@ -88,6 +88,8 @@ const FormContainer = styled.div`
   background: ${COLORS.primaryColor};
   height: 100%;
   padding: 30px;
+
+  border-right: solid 5px ${COLORS.secondaryColor};
 `;
 
 const Container = styled.div`

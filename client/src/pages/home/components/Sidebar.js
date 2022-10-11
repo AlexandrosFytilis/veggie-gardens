@@ -16,8 +16,10 @@ const Wrapper = styled.div`
   position: relative;
   background: ${COLORS.darkPrimaryColor};
 
-  width: 20vw;
+  width: 20%;
   min-height: 95vh;
+
+  box-sizing: border-box;
 
   padding: 20px;
 `;

@@ -11,8 +11,6 @@ export const SingleVegetable = ({ item }) => {
   const currentDate = new Date().toLocaleDateString("en-CA");
 
   const daysBeforeHarvest = item.harvest - ((Date.parse(currentDate) - Date.parse(item.datePlanted)) / 24 / 60 / 60 / 1000);
-  const daysFullyGrown = item.growth - ((Date.parse(currentDate) - Date.parse(item.datePlanted)) / 24 / 60 / 60 / 1000);
-
 
   return (
     <Wrapper>
@@ -20,13 +18,12 @@ export const SingleVegetable = ({ item }) => {
         <VegetableContainer>
           <Image src={item.img}></Image>
           <DescriptionContainer>
-            <VegetableName><Span>{item.name}</Span></VegetableName>
+            <VegetableCounter>
+              <VegetableName><Span>{item.name} x 1</Span></VegetableName>
+              <IncrementalButton>+</IncrementalButton>
+              <IncrementalButton>-</IncrementalButton>
+            </VegetableCounter>
             <Para><Span>Planted:</Span> {item.datePlanted}</Para>
-            {daysFullyGrown > 0 ? (
-              <Para>Plant fully grown in approximately: {daysFullyGrown} days</Para>
-            ) : (
-              <Para>Plant fully grown!</Para>
-            )}
             {daysBeforeHarvest > 0 ? (
               <Para>First available harvest in approximately: {daysBeforeHarvest} days</Para>
             ) : (
@@ -38,7 +35,11 @@ export const SingleVegetable = ({ item }) => {
         <VegetableContainer>
           <Image src={item.img}></Image>
           <DescriptionContainer>
-            <VegetableName><Span>{item.name}</Span></VegetableName>
+            <VegetableCounter>
+              <VegetableName><Span>{item.name} x 1</Span></VegetableName>
+              <IncrementalButton>+</IncrementalButton>
+              <IncrementalButton>-</IncrementalButton>
+            </VegetableCounter>
             <Para><Span>not planted*</Span></Para>
             <Input
               onChange={(e) => {
@@ -89,6 +90,11 @@ const VegetableContainer = styled.div`
   display: flex;
 `;
 
+const VegetableCounter = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Image = styled.img`
   width: 100px;
   height: 100px;
@@ -136,6 +142,24 @@ const Button = styled.button`
   align-items: center;
 
   width: 150px;
+
+  &:hover {
+    background: ${COLORS.tertiaryColor};
+    color: ${COLORS.darkPrimaryColor};
+    border: solid 2px ${COLORS.darkPrimaryColor};
+  }
+`;
+
+const IncrementalButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 5px;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
 
   &:hover {
     background: ${COLORS.tertiaryColor};

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { useAddFavoriteVegetable } from "../../general/hooks/useAddFavoriteVegetable.js";
 import { useDeleteFavoriteVegetable } from "../../general/hooks/useDeleteFavoriteVegetable.js";
+import { COLORS } from "../../general/utils/colors.js";
 import { vegetableData } from "../../general/utils/vegatableData.js";
 
 export const Information = () => {
@@ -47,6 +48,8 @@ export const Information = () => {
 const Wrapper = styled.div`
   display: flex;
   min-width: 100vw;
+
+  background: ${COLORS.primaryColor};
 `;
 
 const Title = styled.h1`
@@ -80,6 +83,8 @@ const Block = styled.div`
   background: gray;
   width: 20%;
   min-height: 95vh;
+
+  background: ${COLORS.darkPrimaryColor};
 `;
 
 const ItemInfoContainer = styled.div`
@@ -94,4 +99,10 @@ const ItemInfoContainer = styled.div`
 
 const Button = styled.button`
   padding: 5px;
+
+  &:hover {
+    background: ${COLORS.darkPrimaryColor};
+    color: ${COLORS.tertiaryColor};
+    opacity: 100%;
+  }
 `;
