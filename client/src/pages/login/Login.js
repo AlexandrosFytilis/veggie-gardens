@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { COLORS } from "../../general/utils/colors.js";
 import { useLogin } from "./hooks/useLogin.js";
 
 const isFormValid = (form) => {
@@ -60,7 +61,9 @@ export const Login = () => {
         </Form>
       </FormContainer>
       <WelcomePageContainer>
-        <WelcomeMessage>Setup and Organize your dream garden!</WelcomeMessage>
+        <Container>
+          <WelcomeMessage>Setup and Organize your dream garden!</WelcomeMessage>
+        </Container>
       </WelcomePageContainer>
     </Wrapper>
   );
@@ -82,22 +85,30 @@ const Form = styled.form`
 
 const FormContainer = styled.div`
   width: 25%;
-  background: red;
+  background: ${COLORS.primaryColor};
   height: 100%;
   padding: 30px;
 `;
 
+const Container = styled.div`
+  background: green;
+  opacity: 100%;
+`;
+
 const WelcomePageContainer = styled.div`
   width: 75%;
-  background: blue;
+  background-image: url("https://hgtvhome.sndimg.com/content/dam/images/hgtv/stock/2018/3/29/0/shutterstock_Irina-Fischer_491150020_garden-design.jpg.rend.hgtvcom.1280.853.suffix/1522338145651.jpeg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 `;
 
 const WelcomeMessage = styled.p`
   font-size: 70px;
   font-weight: bold;
+  color: white;
 
   margin-top: 60px;
-  padding: 40px;
+  padding: 20px;
 `;
 
 const LoginContainer = styled.div`
@@ -110,29 +121,34 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  border-bottom: solid 1px black;
+  border-bottom: solid 3px ${COLORS.secondaryColor};
 `;
 
 const Title = styled.h1`
   padding-bottom: 40px;
+  color: ${COLORS.tertiaryColor};
 
   font-size: 46px;
 `;
 
 const StyledPara = styled.p`
   font-size: 24px;
+  color: ${COLORS.secondaryColor};
 
   & > a {
-    text-decoration: none;
+    color: ${COLORS.tertiaryColor};
   }
 `;
 
 const Button = styled.button`
   margin-top: 30px;
   font-size: 28px;
+  color: ${COLORS.secondaryColor};
+  background: green;
+  border: solid 2px ${COLORS.secondaryColor};
 
   &:disabled {
-    
+    background: ${COLORS.primaryColor};
   }
 `;
 

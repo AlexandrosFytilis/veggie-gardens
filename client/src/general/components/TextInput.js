@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../utils/colors.js";
 
 const TextInput = ({ setForm, label, type, formKey }) => {
   return (
@@ -28,11 +29,14 @@ const Wrapper = styled.div`
 
 const Label = styled.label`
   font-size: 28px;
+  color: ${COLORS.secondaryColor};
 `;
 
 const Input = styled.input`
   width: 100%;
 
   box-sizing: border-box;
+  border: solid 2px ${COLORS.secondaryColor};
+
   margin-top: 5px;
 `;

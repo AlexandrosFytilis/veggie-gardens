@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
+import { COLORS } from "../../general/utils/colors.js";
 import useSignUp from "./hooks/useSignUp.js";
 
 const isFormValid = (form) => {
@@ -32,7 +33,7 @@ export const SignUp = () => {
     password: "",
     confirmPassword: ""
   });
-  
+
   useEffect(() => {
     if (email !== null) {
       navigate("/");
@@ -40,33 +41,45 @@ export const SignUp = () => {
   }, [email, navigate]);
 
   return (
-    <Wrapper>
-      <Form>
-        <Header>Sign up</Header>
-        <TextInput setForm={setSignUpInfo} label="Username" type="text" formKey="userName" />
-        <TextInput setForm={setSignUpInfo} label="Email" type="email" formKey="email" />
-        <TextInput setForm={setSignUpInfo} label="Password" type="password" formKey="password" />
-        <TextInput setForm={setSignUpInfo} label="Confirm password" type="password" formKey="confirmPassword" />
-        <ButtonContainer>
-          <Button
-            type="submit"
-            disabled={isFormValid(signUpInfo)}
-            onClick={async (e) => {
-              e.preventDefault();
-              if (signUpInfo.password !== signUpInfo.confirmPassword) {
-                alert("passwords don't match");
-              } else {
-                await signUp(signUpInfo);
-              }
-            }}
-          >
-            Submit
-          </Button>
-        </ButtonContainer>
-      </Form>
-    </Wrapper>
+    <Background>
+      <Wrapper>
+        <Form>
+          <Header>Sign up</Header>
+          <TextInput setForm={setSignUpInfo} label="Username" type="text" formKey="userName" />
+          <TextInput setForm={setSignUpInfo} label="Email" type="email" formKey="email" />
+          <TextInput setForm={setSignUpInfo} label="Password" type="password" formKey="password" />
+          <TextInput setForm={setSignUpInfo} label="Confirm password" type="password" formKey="confirmPassword" />
+          <ButtonContainer>
+            <Button
+              type="submit"
+              disabled={isFormValid(signUpInfo)}
+              onClick={async (e) => {
+                e.preventDefault();
+                if (signUpInfo.password !== signUpInfo.confirmPassword) {
+                  alert("passwords don't match");
+                } else {
+                  await signUp(signUpInfo);
+                }
+              }}
+            >
+              Submit
+            </Button>
+          </ButtonContainer>
+        </Form>
+      </Wrapper>
+    </Background>
   );
 };
+
+const Background = styled.div`
+  background-image: url("https://www.rona.ca/documents/ronaResponsive/SpecialPages/Projects/assets/images/template-diy/growing-a-vegetable-garden/FB-legumes-jardin-laitue.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -86,11 +99,15 @@ const Wrapper = styled.div`
   margin-right: auto;
 
   margin-top: 8%;
+
+  background: ${COLORS.primaryColor};
 `;
 
 const Header = styled.h2`
   margin-bottom: 10px;
   font-size: 38px;
+
+  color: ${COLORS.secondaryColor};
 `;
 
 const Form = styled.form`
@@ -110,7 +127,11 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   width: 40%;
 
-  &:disabled {
+  color: ${COLORS.secondaryColor};
+  background: green;
+  border: solid 2px ${COLORS.secondaryColor};
 
+  &:disabled {
+    background: ${COLORS.primaryColor};
   }
 `;

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { COLORS } from "./general/utils/colors.js";
 
 export default createGlobalStyle`
   :root {
@@ -66,6 +67,7 @@ button {
   font-family: var(--font-heading);
   font-size: 32px;
   text-align: center;
+  
 }
 button:hover {
   cursor: pointer;
@@ -77,6 +79,16 @@ li,
 blockquote,
 input {
   font-family: var(--font-body);
+}
+
+button {
+  color: ${COLORS.secondaryColor};
+  background: green;
+  border: solid 2px ${COLORS.secondaryColor};
+
+  &:disabled {
+    background: ${COLORS.primaryColor};
+  }
 }
 
   input {
