@@ -40,24 +40,22 @@ export const Profile = () => {
   return (
     <Wrapper>
       <Block />
-      <div>
-        <div>
-          <p>UserName: {currentUser.userName}</p>
-          <p>Email: {currentUser.email}</p>
-          <button
+      <ContentContainer>
+        <PersonalInfoContainer>
+          <Button
             onClick={() => setRequestedChange((current) => !current)}
           >
             {requestedChange ? "Cancel" : "Change Information?"}
-          </button>
-        </div>
+          </Button>
+        </PersonalInfoContainer>
         {requestedChange &&
             <div>
-              <form>
+              <Form>
                 <TextInput setForm={setUpdateInfo} label="Username" type="text" formKey="userName" />
                 <TextInput setForm={setUpdateInfo} label="Password" type="password" formKey="password" />
                 <TextInput setForm={setUpdateInfo} label="Confirm password" type="password" formKey="confirmPassword" />
                 <div>
-                  <button
+                  <Button
                     type="submit"
                     disabled={isChangeRequestInvalid(updateInfo)}
                     onClick={async () => {
@@ -68,12 +66,12 @@ export const Profile = () => {
                     }}
                   >
                     Submit
-                  </button>
+                  </Button>
                 </div>
-              </form>
+              </Form>
             </div>
         }
-      </div>
+      </ContentContainer>
       <Block />
     </Wrapper>
   );
@@ -89,4 +87,29 @@ const Block = styled.div`
   background: gray;
   width: 20%;
   min-height: 95vh;
+`;
+
+const PersonalInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const ContentContainer = styled.div`
+  margin: 150px auto 250px;
+
+  border: solid 3px black;
+  padding: 50px 50px;
+
+  border-radius: 15px;
+  background: white;
+`;
+
+const Button = styled.button`
+  width: 100%;
+`;
+
+const Form = styled.form`
+  width: 100%;
+  box-sizing: border-box;
 `;
