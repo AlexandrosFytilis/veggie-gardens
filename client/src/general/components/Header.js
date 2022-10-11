@@ -9,25 +9,27 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-      <p>Welcome
-        <Link to={"/profile"}>
-          {currentUser.userName}
-        </Link>
-      </p>
-      <Link to={"/"}>
-        <p>Logo</p>
-      </Link>
-      <Link to={"/search"}>
-        <p>Wiki</p>
-      </Link>
-      <LogoutButton
-        onClick={() => {
-          persistCurrentUser(null);
-          navigate("/login");
-        }}
-      >
-        Logout
-      </LogoutButton>
+      <StyledLink to={"/search"}>
+        <h2>Wiki</h2>
+      </StyledLink>
+      <StyledLink to={"/"}>
+        <Title>Veggie Gardens</Title>
+      </StyledLink>
+      <UserContainer>
+        <h3>
+          <StyledLink to={"/profile"}>
+            {currentUser.userName}
+          </StyledLink>
+        </h3>
+        <LogoutButton
+          onClick={() => {
+            persistCurrentUser(null);
+            navigate("/login");
+          }}
+        >
+          Logout
+        </LogoutButton>
+      </UserContainer>
     </StyledHeader>
   );
 };
@@ -40,11 +42,30 @@ const StyledHeader = styled.header`
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
 
   position: sticky;
   top: 0px;
 `;
 
 const LogoutButton = styled.button`
-  margin-right: 15px;
+  margin: 0 15px;
 `;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
+const Title = styled.h1`
+  font-size: 32px;
+`;
+
+const UserContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
