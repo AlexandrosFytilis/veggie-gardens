@@ -38,7 +38,7 @@ export const Profile = () => {
 
   return (
     <Wrapper>
-      <Block />
+      <LeftBlock />
       <ContentContainer>
         <PersonalInfoContainer>
           <Button
@@ -71,7 +71,7 @@ export const Profile = () => {
             </div>
         }
       </ContentContainer>
-      <Block />
+      <RightBlock />
     </Wrapper>
   );
 };
@@ -85,10 +85,20 @@ const Wrapper = styled.div`
   background-size: 100%;
 `;
 
-const Block = styled.div`
-  background: gray;
+const LeftBlock = styled.div`
   width: 20%;
   min-height: 95vh;
+
+  border-right: solid 5px ${COLORS.secondaryColor};
+
+  background: ${COLORS.darkPrimaryColor};
+`;
+
+const RightBlock = styled.div`
+  width: 20%;
+  min-height: 95vh;
+
+  border-left: solid 5px ${COLORS.secondaryColor};
 
   background: ${COLORS.darkPrimaryColor};
 `;
@@ -102,7 +112,7 @@ const PersonalInfoContainer = styled.div`
 const ContentContainer = styled.div`
   margin: 150px auto 250px;
 
-  border: solid 3px black;
+  border: solid 3px ${COLORS.secondaryColor};
   padding: 50px 50px;
 
   border-radius: 15px;

@@ -7,9 +7,6 @@ import { WateringTracker } from "./WateringTracker.js";
 
 export const VegetableFeed = () => {
   const { vegetables } = useContext(CurrentUserContext);
-  console.log(vegetables);
-
-
 
   const compare = (first, second) => {
     const isFirst = first.name;

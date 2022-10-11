@@ -25,7 +25,7 @@ export const Information = () => {
           <Para>Growth time: {itemInfo.growth} days</Para>
           <Para>Time before first harvest: {itemInfo.harvest} Days</Para>
           <Para>Yield per plante: {itemInfo.yield}</Para>
-          <Para>Time before plant need watering: {itemInfo.water} Days</Para>
+          <Para>Time before plant needs watering: {itemInfo.water} Days</Para>
         </DescriptionContainer>
         {!currentUser.favoriteVegetables.includes(itemInfo.name) ? (
           <Button

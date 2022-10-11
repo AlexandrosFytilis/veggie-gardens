@@ -19,9 +19,7 @@ export const SingleVegetable = ({ item }) => {
           <Image src={item.img}></Image>
           <DescriptionContainer>
             <VegetableCounter>
-              <VegetableName><Span>{item.name} x 1</Span></VegetableName>
-              <IncrementalButton>+</IncrementalButton>
-              <IncrementalButton>-</IncrementalButton>
+              <VegetableName><Span>{item.name}</Span></VegetableName>
             </VegetableCounter>
             <Para><Span>Planted:</Span> {item.datePlanted}</Para>
             {daysBeforeHarvest > 0 ? (
@@ -36,9 +34,11 @@ export const SingleVegetable = ({ item }) => {
           <Image src={item.img}></Image>
           <DescriptionContainer>
             <VegetableCounter>
-              <VegetableName><Span>{item.name} x 1</Span></VegetableName>
-              <IncrementalButton>+</IncrementalButton>
-              <IncrementalButton>-</IncrementalButton>
+              <VegetableName><Span>{item.name}</Span></VegetableName>
+              {/* <IncrementalButton>+</IncrementalButton>
+              <IncrementalButton
+                disabled={item.amount >= 1}
+              >-</IncrementalButton> */}
             </VegetableCounter>
             <Para><Span>not planted*</Span></Para>
             <Input
@@ -150,20 +150,20 @@ const Button = styled.button`
   }
 `;
 
-const IncrementalButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// const IncrementalButton = styled.button`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  margin-left: 5px;
+//   margin-left: 5px;
 
-  width: 30px;
-  height: 30px;
-  border-radius: 100px;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 100px;
 
-  &:hover {
-    background: ${COLORS.tertiaryColor};
-    color: ${COLORS.darkPrimaryColor};
-    border: solid 2px ${COLORS.darkPrimaryColor};
-  }
-`;
+//   &:hover {
+//     background: ${COLORS.tertiaryColor};
+//     color: ${COLORS.darkPrimaryColor};
+//     border: solid 2px ${COLORS.darkPrimaryColor};
+//   }
+// `;

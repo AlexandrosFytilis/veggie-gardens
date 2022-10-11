@@ -582,7 +582,7 @@ export const vegetableData = [
   {
     name: "Sweet Potato",
     description: "This is a Carrot",
-    img: "https://media.istockphoto.com/photos/sweet-potato-with-slices-picture-id1125646611?k=20&m=1125646611&s=612x612",
+    img: "https://media.istockphoto.com/photos/sweet-potato-with-slices-picture-id1125646611?b=1&k=20&m=1125646611&s=612x612&w=0&h=nQsTnvJZjHQz6SvzpluJGjA7l1Yr0uwHxMJIGw7L9II=",
     harvest: 90,
     growth: 60,
     water: 3,

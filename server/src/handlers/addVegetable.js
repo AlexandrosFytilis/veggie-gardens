@@ -11,7 +11,7 @@ export const addVegetable = async (request, response) => {
       email: request.params.email
     },
     {
-      $push: { vegetables: {...vegetable, id: uuidV4(), datePlanted: null }}
+      $push: { vegetables: {...vegetable, id: uuidV4(), datePlanted: null, amount: 1 }}
     }
   );
 

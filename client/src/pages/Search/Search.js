@@ -48,7 +48,7 @@ const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 100vw;
-  background: ${COLORS.secondaryColor};
+  background: ${COLORS.darkPrimaryColor};
 `;
 
 const Block = styled.div`
@@ -72,6 +72,9 @@ const DropDownContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
+
+  border-right: solid 3px ${COLORS.secondaryColor};
+  border-left: solid 3px ${COLORS.secondaryColor};
 `;
 
 const ClearButton = styled.button`
