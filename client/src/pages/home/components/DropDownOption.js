@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
+import { COLORS } from "../../../general/utils/colors.js";
 import { useAddVegetable } from "../hooks/useAddVegetable.js";
 
 export const DropDownOption = ({ item }) => {
@@ -58,6 +59,8 @@ const Wrapper = styled.div`
   border-bottom: solid 2px black;
   border-right: solid 2px black;
   border-left: solid 2px black;
+
+  background: ${COLORS.primaryColor};
 `;
 
 const SpecialWrapper = styled.div`
@@ -72,6 +75,8 @@ const SpecialWrapper = styled.div`
   border-bottom: solid 2px black;
   border-right: solid 2px black;
   border-left: solid 2px black;
+
+  background: lime;
 `;
 
 const Image = styled.img`
@@ -111,4 +116,9 @@ const Button = styled.button`
 
   width: 30px;
   height: 30px;
+
+  &:hover {
+    background-color: ${COLORS.tertiaryColor};
+    color: ${COLORS.darkPrimaryColor};
+  }
 `;

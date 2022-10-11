@@ -3,6 +3,7 @@ import { DropDownOption } from "./DropDownOption.js";
 import { vegetableData } from "../../../general/utils/vegatableData.js";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
 import styled from "styled-components";
+import { COLORS } from "../../../general/utils/colors.js";
 
 export const Dropdown = () => {
   const { currentUser } = useContext(CurrentUserContext);

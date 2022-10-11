@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { COLORS } from "../../../general/utils/colors.js";
 import { useDeleteVegetable } from "../hooks/useDeleteVegetable.js";
 import { usePlantVegetable } from "../hooks/usePlantVegetable.js";
 
@@ -81,7 +82,7 @@ const Wrapper = styled.div`
 
   height: 12vh;
 
-  background: white;
+  background: ${COLORS.primaryColor};
 `;
 
 const VegetableContainer = styled.div`
@@ -97,10 +98,12 @@ const Image = styled.img`
 
 const VegetableName = styled.p`
   font-size: 28px;
+  color: ${COLORS.tertiaryColor};
 `;
 
 const Para = styled.p`
   font-size: 20px;
+  color: ${COLORS.tertiaryColor};
 `;
 
 const DescriptionContainer = styled.div`
@@ -117,6 +120,7 @@ const Span = styled.span`
 
 const Input = styled.input`
   width: 160px;
+  border: solid 2px ${COLORS.tertiaryColor};
 `;
 
 const ButtonsContainer = styled.div`
@@ -132,4 +136,10 @@ const Button = styled.button`
   align-items: center;
 
   width: 150px;
+
+  &:hover {
+    background: ${COLORS.tertiaryColor};
+    color: ${COLORS.darkPrimaryColor};
+    border: solid 2px ${COLORS.darkPrimaryColor};
+  }
 `;

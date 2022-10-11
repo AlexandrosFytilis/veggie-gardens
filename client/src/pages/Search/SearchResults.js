@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { COLORS } from "../../general/utils/colors.js";
 
 export const SearchResult = ({ item }) => {
 
@@ -19,9 +20,10 @@ const Wrapper = styled.div`
   display: flex;
   border-bottom: solid 1px black;
   padding: 10px;
+  background: ${COLORS.primaryColor};
 
   &:hover {
-    background: red;
+    background: ${COLORS.tertiaryColor};
   }
 `;
 

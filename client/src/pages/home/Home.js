@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../general/utils/colors.js";
 import { SideBar } from "./components/Sidebar.js";
 import { VegetableFeed } from "./components/VegetableFeed.js";
 
@@ -31,4 +32,5 @@ const Block = styled.div`
   background: gray;
   width: 30%;
   min-height: 95vh;
+  background: ${COLORS.darkPrimaryColor};
 `;

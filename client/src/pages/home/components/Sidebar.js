@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../../general/utils/colors.js";
 import { Dropdown } from "./DropDown.js";
 
 export const SideBar = () => {
@@ -13,8 +14,8 @@ export const SideBar = () => {
 
 const Wrapper = styled.div`
   position: relative;
+  background: ${COLORS.darkPrimaryColor};
 
-  background: gray;
   width: 20vw;
   min-height: 95vh;
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { COLORS } from "../../general/utils/colors.js";
 import { vegetableData } from "../../general/utils/vegatableData.js";
 import { SearchResult } from "./SearchResults.js";
 
@@ -30,11 +31,11 @@ export const Search = () => {
             </div>
           ))}
           {value.length > 0 && 
-              <button
+              <ClearButton
                 onClick={() => reset()}
               >
-                Reset
-              </button>
+                v
+              </ClearButton>
           }
         </div>
       </DropDownContainer>
@@ -47,23 +48,39 @@ const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 100vw;
+  background: ${COLORS.secondaryColor};
 `;
 
 const Block = styled.div`
   background: gray;
   width: 20%;
   min-height: 95vh;
+  background: ${COLORS.darkPrimaryColor};
 `;
 
 const InputConainer = styled.div`
-  
 `;
 
 const Input = styled.input`
   width: 100%;
   box-sizing: border-box;
+  border: solid 2px ${COLORS.tertiaryColor};
 `;
 
 const DropDownContainer = styled.div`
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+`;
+
+const ClearButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+
+  width: 100%;
+  border: solid 2px ${COLORS.darkPrimaryColor};
 `;
