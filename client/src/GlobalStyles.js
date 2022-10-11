@@ -67,6 +67,10 @@ button {
   font-size: 32px;
   text-align: center;
 }
+button:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
 p,
 a,
 li,

@@ -15,33 +15,43 @@ export const Information = () => {
   const deleteFavoriteVegetable = useDeleteFavoriteVegetable();
 
   return (
-    <InformationContainer>
-      <Image src={itemInfo.img}></Image>
-      <div>
-        <h2>{itemInfo.name}</h2>
-        <p>{itemInfo.description}</p>
-        <p>Average growth time: {itemInfo.growth} days</p>
-        <p>Average time before first harvest: {itemInfo.harvest} Days</p>
-      </div>
-      {!currentUser.favoriteVegetables.includes(itemInfo.name) ? (
-        <button
-          onClick={() => addFavoriteVegetable(itemInfo.name)}
-        >
-          Favorite
-        </button>
-      ) : (
-        <button
-          onClick={() => deleteFavoriteVegetable(itemInfo.name)}
-        >
-          Remove from Favorites
-        </button>
-      )}
-    </InformationContainer>
+    <Wrapper>
+      <Block />
+      <ItemInfoContainer>
+        <Title>{itemInfo.name}</Title>
+        <Image src={itemInfo.img}></Image>
+        <DescriptionContainer>
+          <Para>Growth time: {itemInfo.growth} days</Para>
+          <Para>Time before first harvest: {itemInfo.harvest} Days</Para>
+          <Para>Yield per plante: {itemInfo.yield}</Para>
+          <Para>Time before plant need watering: {itemInfo.water} Days</Para>
+        </DescriptionContainer>
+        {!currentUser.favoriteVegetables.includes(itemInfo.name) ? (
+          <Button
+            onClick={() => addFavoriteVegetable(itemInfo.name)}
+          >
+            Favorite
+          </Button>
+        ) : (
+          <Button
+            onClick={() => deleteFavoriteVegetable(itemInfo.name)}
+          >
+            Remove from Favorites
+          </Button>
+        )}
+      </ItemInfoContainer>
+      <Block />
+    </Wrapper>
   );
 };
-const InformationContainer = styled.div`
+const Wrapper = styled.div`
   display: flex;
-  padding: 20px;
+  min-width: 100vw;
+`;
+
+const Title = styled.h1`
+  font-size: 48px;
+  margin-bottom: 10px;
 `;
 
 const Image = styled.img`
@@ -53,3 +63,35 @@ const Image = styled.img`
   border: solid 3px black;
 `;
 
+const Para = styled.p`
+  font-size: 24px;
+`;
+
+const DescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 20px 0;
+`;
+
+const Block = styled.div`
+  background: gray;
+  width: 20%;
+  min-height: 95vh;
+`;
+
+const ItemInfoContainer = styled.div`
+  width: 60%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 80px;
+`;
+
+const Button = styled.button`
+  padding: 5px;
+`;

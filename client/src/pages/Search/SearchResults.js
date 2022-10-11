@@ -5,12 +5,12 @@ import styled from "styled-components";
 export const SearchResult = ({ item }) => {
 
   return (
-    <Link to={`/${item.name}`}>
+    <StyledLink to={`/${item.name}`}>
       <Wrapper>
         <Image src={item.img}></Image>
         <h2>{item.name}</h2>
       </Wrapper>
-    </Link>
+    </StyledLink>
 
   );
 };
@@ -19,6 +19,10 @@ const Wrapper = styled.div`
   display: flex;
   border-bottom: solid 1px black;
   padding: 10px;
+
+  &:hover {
+    background: red;
+  }
 `;
 
 const Image = styled.img`
@@ -26,5 +30,9 @@ const Image = styled.img`
   height: 100px;
   border: solid black 1px;
   margin-right: 10px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 

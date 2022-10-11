@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput.js";
-import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider.js";
 import { useUpdateProfile } from "./hooks/useUpdateProfile.js";
 
 export const Profile = () => {
-  const { currentUser } = useContext(CurrentUserContext);
   const [requestedChange, setRequestedChange] = useState(false);
   const [updateInfo, setUpdateInfo] = useState({
     userName: "",
