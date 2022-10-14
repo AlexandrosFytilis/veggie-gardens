@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { COLORS } from "./general/utils/colors.js";
-
-export default createGlobalStyle`
+import { COLORS } from "./general/utils/colors";
+export default createGlobalStyle `
   :root {
     --color-cadmium-red: #D80026;
     --color-alabama-crimson: #AA001E;

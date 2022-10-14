@@ -7,7 +7,8 @@
     "lib": ["esnext", "dom"],
     "esModuleInterop": true, 
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
   },
   "exclude": ["node_modules"]
 }

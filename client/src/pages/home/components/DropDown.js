@@ -1,83 +1,49 @@
 import React, { useContext, useState } from "react";
-import { DropDownOption } from "./DropDownOption.js";
-import { vegetableData } from "../../../general/utils/vegatableData.js";
-import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider.js";
+import { DropDownOption } from "./DropDownOption";
+import { vegetableData } from "../../../general/utils/vegatableData";
+import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider";
 import styled from "styled-components";
-
 export const Dropdown = () => {
-  const { currentUser } = useContext(CurrentUserContext);
-  const [selected, setSelected] = useState(false);
-  const [value, setValue] = useState("");
-
-  const compare = (first, second) => {
-    const isFirstInFavoriteVegetables = currentUser.favoriteVegetables.includes(first.name);
-    const isSecondInFavoriteVegetables = currentUser.favoriteVegetables.includes(second.name);
-
-    if (isFirstInFavoriteVegetables === isSecondInFavoriteVegetables) {
-      return 0;
-    }
-    if (isFirstInFavoriteVegetables) {
-      return -1;
-    }
-    return 1;
-  };
-
-  return (
-    <Wrapper>
-      <InputContainer>
-        {value.length > 0 && (
-          <ClearButton
-            onClick={() => setValue("")}
-          >
-            X
-          </ClearButton>
-        )}
-
-        <Input
-          value={value}
-          placeholder="Add a Vegetable"
-          onFocus={() => setSelected(true)}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-        />
-      </InputContainer>
-      {
+    const { currentUser } = useContext(CurrentUserContext);
+    const [selected, setSelected] = useState(false);
+    const [value, setValue] = useState("");
+    const compare = (first, second) => {
+        const isFirstInFavoriteVegetables = currentUser.favoriteVegetables.includes(first.name);
+        const isSecondInFavoriteVegetables = currentUser.favoriteVegetables.includes(second.name);
+        if (isFirstInFavoriteVegetables === isSecondInFavoriteVegetables) {
+            return 0;
+        }
+        if (isFirstInFavoriteVegetables) {
+            return -1;
+        }
+        return 1;
+    };
+    return (React.createElement(Wrapper, null,
+        React.createElement(InputContainer, null,
+            value.length > 0 && (React.createElement(ClearButton, { onClick: () => setValue("") }, "X")),
+            React.createElement(Input, { value: value, placeholder: "Add a Vegetable", onFocus: () => setSelected(true), onChange: (e) => {
+                    setValue(e.target.value);
+                } })),
         selected &&
-        <div>
-          {vegetableData
-            .filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
-            .sort(compare)
-            .map((item, index) => (
-              index < 10 &&
-              <div key={index}>
-                <DropDownOption item={item} />
-              </div>
-            ))}
-          <CloseButton
-            onClick={() => setSelected(false)}
-          >
-            ^
-          </CloseButton>
-        </div>
-
-      }
-    </Wrapper >
-  );
+            React.createElement("div", null,
+                vegetableData
+                    .filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
+                    .sort(compare)
+                    .map((item, index) => (index < 10 &&
+                    React.createElement("div", { key: index },
+                        React.createElement(DropDownOption, { item: item })))),
+                React.createElement(CloseButton, { onClick: () => setSelected(false) }, "^"))));
 };
-
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   width: 100%;
   position: sticky;
   box-sizing: border-box;
   top: 70px;
 `;
-
-const InputContainer = styled.div`
+const InputContainer = styled.div `
   position: relative;
 `;
-
-const ClearButton = styled.button`
+const ClearButton = styled.button `
   position: absolute;
   top: 11px;
 
@@ -89,15 +55,13 @@ const ClearButton = styled.button`
 
   font-size: 20px;
 `;
-
-const Input = styled.input`
+const Input = styled.input `
   padding-left: 35px;
   width: 85%;
 
   border: solid 2px black;
 `;
-
-const CloseButton = styled.button`
+const CloseButton = styled.button `
   display: flex;
   align-items: center;
   justify-content: center;
