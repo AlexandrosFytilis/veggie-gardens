@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Vegetable } from "../../domain/Vegetable";
 import { COLORS } from "../../general/utils/colors";
 
-export const SearchResult = ({ item }) => {
+interface Props {
+  item: Vegetable
+}
+
+export const SearchResult = ({ item }: Props) => {
 
   return (
     <StyledLink to={`/${item.name}`}>

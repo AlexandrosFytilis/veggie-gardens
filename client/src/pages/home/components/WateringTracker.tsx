@@ -6,10 +6,15 @@ import { useUpdateProfile } from "../../profile/hooks/useUpdateProfile";
 
 export const WateringTracker = () => {
   const { currentUser } = useContext(CurrentUserContext);
-  const currentDate = new Date().toLocaleDateString("en-CA");
-  const result = (Date.parse(currentDate) - Date.parse(currentUser.lastWateringDay)) / 24 / 60 / 60 / 1000;
   const updateProfile = useUpdateProfile();
 
+  if (!currentUser) {
+    return null;
+  }
+
+  const currentDate = new Date().toLocaleDateString("en-CA");
+  const result = (Date.parse(currentDate) - Date.parse(currentUser.lastWateringDay)) / 24 / 60 / 60 / 1000;
+  
   return result <= 2 ? (
     <Wrapper>
       <DailyInformationContainer>

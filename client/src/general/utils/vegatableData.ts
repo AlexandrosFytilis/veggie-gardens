@@ -388,7 +388,7 @@ export const vegetableData = [
     harvest: 65,
     growth: 50,
     water: 3,
-    yield: 2-4
+    yield: "2-4"
   },
   {
     name: "Onion",
@@ -514,7 +514,7 @@ export const vegetableData = [
     harvest: 100,
     growth: 80,
     water: 3,
-    yield: 2-4
+    yield: "2-4"
   },
   {
     name: "Savoy Cabbage",

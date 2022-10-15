@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Vegetable } from "../../../domain/Vegetable";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider";
 import { COLORS } from "../../../general/utils/colors";
 import { useAddVegetable } from "../hooks/useAddVegetable";
 
-export const DropDownOption = ({ item }) => {
+interface Props {
+  item: Vegetable,
+}
+
+export const DropDownOption = ({ item }: Props) => {
   const { currentUser } = useContext(CurrentUserContext);
   const addVegetable = useAddVegetable();
   const navigate = useNavigate();
 
-  return currentUser.favoriteVegetables.includes(item.name) ? (
+  return currentUser?.favoriteVegetables.includes(item.name) ? (
     <SpecialWrapper>
       <ItemContainer>
         <Image src={item.img}></Image>

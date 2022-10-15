@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { Vegetable } from "../../../domain/Vegetable";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider";
 import { COLORS } from "../../../general/utils/colors";
 import { SingleVegetable } from "./SingleVegetable";
@@ -8,7 +9,7 @@ import { WateringTracker } from "./WateringTracker";
 export const VegetableFeed = () => {
   const { vegetables } = useContext(CurrentUserContext);
 
-  const compare = (first, second) => {
+  const compare = (first: Vegetable, second: Vegetable) => {
     const isFirst = first.name;
     const isSecond = second.name;
 

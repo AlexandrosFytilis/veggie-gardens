@@ -6,7 +6,12 @@ import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider";
 import { COLORS } from "../../general/utils/colors";
 import { useLogin } from "./hooks/useLogin";
 
-const isFormValid = (form) => {
+export interface LoginForm {
+  email: string,
+  password: string
+}
+
+const isFormValid = (form: LoginForm) => {
   if (!form.email.match(/^.+@.+\..+$/)) {
     return false;
   }

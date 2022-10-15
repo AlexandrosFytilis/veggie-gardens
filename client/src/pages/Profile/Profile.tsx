@@ -4,6 +4,12 @@ import TextInput from "../../general/components/TextInput";
 import { COLORS } from "../../general/utils/colors";
 import { useUpdateProfile } from "./hooks/useUpdateProfile";
 
+interface ProfileForm {
+  userName: string,
+  password: string,
+  confirmPassword: string,
+}
+
 export const Profile = () => {
   const [requestedChange, setRequestedChange] = useState(false);
   const [updateInfo, setUpdateInfo] = useState({
@@ -14,7 +20,7 @@ export const Profile = () => {
 
   const updateProfile = useUpdateProfile();
 
-  const isChangeRequestInvalid = (form) => {
+  const isChangeRequestInvalid = (form: ProfileForm) => {
     if (!Object.values(form).some((value) => value.length > 0)) {
       return true;
     }

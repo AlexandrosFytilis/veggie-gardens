@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Vegetable } from "../../../domain/Vegetable";
 import { COLORS } from "../../../general/utils/colors";
 import { useDeleteVegetable } from "../hooks/useDeleteVegetable";
 import { usePlantVegetable } from "../hooks/usePlantVegetable";
 
-export const SingleVegetable = ({ item }) => {
+interface Props {
+  item: Vegetable,
+}
+
+export const SingleVegetable = ({ item }: Props) => {
   const deleteVegetable = useDeleteVegetable();
   const plantVegetable = usePlantVegetable();
   const [plantedDate, setPlantedDate] = useState((new Date()).toLocaleDateString("en-CA"));
   const currentDate = new Date().toLocaleDateString("en-CA");
 
-  const daysBeforeHarvest = item.harvest - ((Date.parse(currentDate) - Date.parse(item.datePlanted)) / 24 / 60 / 60 / 1000);
+  let daysBeforeHarvest = undefined;
+
+  if (item.datePlanted) {
+    daysBeforeHarvest = item.harvest - ((Date.parse(currentDate) - Date.parse(item.datePlanted)) / 24 / 60 / 60 / 1000);
+  }
 
   return (
     <Wrapper>
-      {item.datePlanted !== null ? (
+      {!item.datePlanted ? (
         <VegetableContainer>
           <Image src={item.img}></Image>
           <DescriptionContainer>
@@ -22,7 +31,7 @@ export const SingleVegetable = ({ item }) => {
               <VegetableName><Span>{item.name}</Span></VegetableName>
             </VegetableCounter>
             <Para><Span>Planted:</Span> {item.datePlanted}</Para>
-            {daysBeforeHarvest > 0 ? (
+            {daysBeforeHarvest && daysBeforeHarvest > 0 ? (
               <Para>First available harvest in approximately: {daysBeforeHarvest} days</Para>
             ) : (
               <Para>Harvesting Time!</Para>

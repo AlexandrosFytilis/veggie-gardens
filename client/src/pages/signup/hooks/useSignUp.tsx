@@ -1,11 +1,12 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { DEFAULT_HEADERS } from "../../../general/utils/network";
+import { SignUpForm } from "../SignUp";
 
 const useSignUp = () => {
   const navigate = useNavigate();
 
-  return useCallback(async (userInfo) => {
+  return useCallback(async (userInfo: SignUpForm) => {
     const response = await fetch("/users", {
       method: "POST",
       headers: DEFAULT_HEADERS,

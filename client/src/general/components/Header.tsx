@@ -19,11 +19,13 @@ export const Header = () => {
         </StyledLink>
       </Container>
       <UserContainer>
-        <h3>
-          <StyledLink to={"/profile"}>
-            {currentUser.userName}
-          </StyledLink>
-        </h3>
+        {currentUser && (
+          <h3>
+            <StyledLink to={"/profile"}>
+              {currentUser.userName}
+            </StyledLink>
+          </h3>
+        )}
         <LogoutButton
           onClick={() => {
             persistCurrentUser(null);

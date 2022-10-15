@@ -1,12 +1,13 @@
 import { useCallback, useContext } from "react";
+import { Vegetable } from "../../../domain/Vegetable";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider";
 import { DEFAULT_HEADERS } from "../../../general/utils/network";
 
 export const useUpdateVegetable = () => {
-  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
+  const { email, fetchCurrentUser } = useContext(CurrentUserContext);
 
-  return useCallback(async (vegetable) => {
-    const response = await fetch(`/users/${currentUser.email}/vegetables/${vegetable.id}`, {
+  return useCallback(async (vegetable: Vegetable) => {
+    const response = await fetch(`/users/${email}/vegetables/${vegetable.id}`, {
       method: "PUT",
       headers: DEFAULT_HEADERS,
       body: JSON.stringify(vegetable)
@@ -17,5 +18,5 @@ export const useUpdateVegetable = () => {
       return;
     }
     fetchCurrentUser();
-  }, [currentUser.email, fetchCurrentUser]);
+  }, [email, fetchCurrentUser]);
 };

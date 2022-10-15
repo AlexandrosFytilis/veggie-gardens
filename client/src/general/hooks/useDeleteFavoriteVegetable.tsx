@@ -3,10 +3,10 @@ import { CurrentUserContext } from "../contexts/CurrenUserProvider";
 import { DEFAULT_HEADERS } from "../utils/network";
 
 export const useDeleteFavoriteVegetable = () => {
-  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
+  const { email, fetchCurrentUser } = useContext(CurrentUserContext);
 
-  return useCallback(async (vegetableName) => {
-    const response = await fetch(`/users/${currentUser.email}/favorite-vegetables`, {
+  return useCallback(async (vegetableName: string) => {
+    const response = await fetch(`/users/${email}/favorite-vegetables`, {
       method: "DELETE",
       headers: DEFAULT_HEADERS,
       body: JSON.stringify({name: vegetableName})
@@ -17,5 +17,5 @@ export const useDeleteFavoriteVegetable = () => {
       return;
     }
     fetchCurrentUser();
-  }, [currentUser.email, fetchCurrentUser]);
+  }, [email, fetchCurrentUser]);
 };

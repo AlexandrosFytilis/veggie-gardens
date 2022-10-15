@@ -1,12 +1,31 @@
-import React, { useState, createContext, useCallback, useEffect } from "react";
+import React, { useState, createContext, useCallback, useEffect, ReactNode } from "react";
+import { User } from "../../domain/User";
+import { Vegetable } from "../../domain/Vegetable";
 
-export const CurrentUserContext = createContext(null);
+interface CurrentUserContextProps {
+  currentUser: User | null,
+  persistCurrentUser: (user: User | null) => void,
+  vegetables?: Vegetable[],
+  fetchCurrentUser: () => void,
+  email: string | null,
+}
 
-const CurrentUserProvider = ({ children }) => {
+export const CurrentUserContext = createContext<CurrentUserContextProps>({
+  currentUser: null,
+  persistCurrentUser: () => undefined,
+  fetchCurrentUser: () => undefined,
+  email: null,
+});
+
+interface Props {
+  children: ReactNode
+}
+
+const CurrentUserProvider = ({ children }: Props) => {
   const [email, setEmail] = useState(window.localStorage.getItem("currentUser"));
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  const persistCurrentUser = (user) => {
+  const persistCurrentUser = (user: User | null) => {
     setCurrentUser(user);
     if (user === null) {
       window.localStorage.removeItem("currentUser");

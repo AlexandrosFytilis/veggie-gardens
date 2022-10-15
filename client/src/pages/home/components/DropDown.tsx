@@ -3,15 +3,16 @@ import { DropDownOption } from "./DropDownOption";
 import { vegetableData } from "../../../general/utils/vegatableData";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider";
 import styled from "styled-components";
+import { Vegetable } from "../../../domain/Vegetable";
 
 export const Dropdown = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const [selected, setSelected] = useState(false);
   const [value, setValue] = useState("");
 
-  const compare = (first, second) => {
-    const isFirstInFavoriteVegetables = currentUser.favoriteVegetables.includes(first.name);
-    const isSecondInFavoriteVegetables = currentUser.favoriteVegetables.includes(second.name);
+  const compare = (first: Vegetable, second: Vegetable) => {
+    const isFirstInFavoriteVegetables = currentUser?.favoriteVegetables.includes(first.name);
+    const isSecondInFavoriteVegetables = currentUser?.favoriteVegetables.includes(second.name);
 
     if (isFirstInFavoriteVegetables === isSecondInFavoriteVegetables) {
       return 0;

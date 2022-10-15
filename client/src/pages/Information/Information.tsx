@@ -9,11 +9,15 @@ import { vegetableData } from "../../general/utils/vegatableData";
 
 export const Information = () => {
   const { currentUser } = useContext(CurrentUserContext);
-
-  const { item } = useParams();
-  const itemInfo = vegetableData.find((searchedItem) => searchedItem.name === item);
   const addFavoriteVegetable = useAddFavoriteVegetable();
   const deleteFavoriteVegetable = useDeleteFavoriteVegetable();
+  const { item } = useParams();
+
+  const itemInfo = vegetableData.find((searchedItem) => searchedItem.name === item);
+
+  if (!itemInfo || !currentUser) {
+    return null;
+  }
 
   return (
     <Wrapper>

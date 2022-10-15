@@ -1,12 +1,13 @@
 import { useCallback, useContext } from "react";
+import { User } from "../../../domain/User";
 import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider";
 import { DEFAULT_HEADERS } from "../../../general/utils/network";
 
 export const useUpdateProfile = () => {
-  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
+  const { email, fetchCurrentUser } = useContext(CurrentUserContext);
 
-  return useCallback(async (updatedInfo) => {
-    const response = await fetch(`/users/${currentUser.email}`, {
+  return useCallback(async (updatedInfo: Partial<User>) => {
+    const response = await fetch(`/users/${email}`, {
       method: "PUT",
       headers: DEFAULT_HEADERS,
       body: JSON.stringify(updatedInfo)
@@ -17,5 +18,5 @@ export const useUpdateProfile = () => {
       return;
     }
     await fetchCurrentUser();
-  }, [currentUser.email, fetchCurrentUser]);
+  }, [email, fetchCurrentUser]);
 };

@@ -6,8 +6,15 @@ import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider";
 import { COLORS } from "../../general/utils/colors";
 import useSignUp from "./hooks/useSignUp";
 
-const isFormValid = (form) => {
-  if (form.userName < 5) {
+export interface SignUpForm {
+  userName: string,
+  email: string,
+  password: string,
+  confirmPassword: string
+}
+
+const isFormValid = (form: SignUpForm) => {
+  if (form.userName.length < 5) {
     return true;
   }
   if (!form.email.match(/^.+@.+\..+$/)) {
@@ -27,7 +34,7 @@ export const SignUp = () => {
   const navigate = useNavigate();
   const signUp = useSignUp();
 
-  const [signUpInfo, setSignUpInfo] = useState({
+  const [signUpInfo, setSignUpInfo] = useState<SignUpForm>({
     userName: "",
     email: "",
     password: "",

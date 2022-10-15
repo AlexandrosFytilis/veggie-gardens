@@ -2,14 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../utils/colors";
 
-const TextInput = ({ setForm, label, type, formKey }) => {
+interface Props {
+  setForm: (_: any) => void,
+  label: string,
+  type: string,
+  formKey: string,
+}
+
+const TextInput = ({ setForm, label, type, formKey }: Props) => {
   return (
     <Wrapper>
       <Label>{label}:</Label>
       <Input
         type={type}
         placeholder={label}
-        onChange={(e) => setForm((current) => ({ ...current, [formKey]: e.target.value }))}
+        onChange={(e) => setForm((current: any) => ({ ...current, [formKey]: e.target.value }))}
       />
     </Wrapper>
   );

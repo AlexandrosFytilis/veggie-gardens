@@ -3,13 +3,12 @@ import { CurrentUserContext } from "../../../general/contexts/CurrenUserProvider
 import { DEFAULT_HEADERS } from "../../../general/utils/network";
 
 export const useDeleteVegetable = () => {
-  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
+  const { email, fetchCurrentUser } = useContext(CurrentUserContext);
 
-  return useCallback(async (id) => {
-    const response = await fetch(`/users/${currentUser.email}/vegetables/${id}`, {
+  return useCallback(async (id: string) => {
+    const response = await fetch(`/users/${email}/vegetables/${id}`, {
       method: "DELETE",
       headers: DEFAULT_HEADERS,
-      body: JSON.stringify()
     });
     if (!response.ok) {
       const json = await response.json();
@@ -17,5 +16,5 @@ export const useDeleteVegetable = () => {
       return;
     }
     fetchCurrentUser();
-  }, [currentUser.email, fetchCurrentUser]);
+  }, [email, fetchCurrentUser]);
 };
