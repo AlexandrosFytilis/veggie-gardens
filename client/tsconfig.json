@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "outDir": "./dist",
   },
   "exclude": ["node_modules"]
 }
