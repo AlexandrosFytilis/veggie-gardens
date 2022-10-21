@@ -66,8 +66,10 @@ export const SingleVegetable = ({ item }: Props) => {
       )}
       <ButtonsContainer>
         <Button
-          onClick={() => { deleteVegetable(item.id); }
-          }>Remove</Button>
+          onClick={() => deleteVegetable(item.id)}
+        >
+          Remove
+        </Button>
         {item.datePlanted === null && (
           <Button
             onClick={() => {

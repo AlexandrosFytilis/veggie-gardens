@@ -5,7 +5,7 @@ import { DEFAULT_HEADERS } from "../../../general/utils/network";
 export const useDeleteVegetable = () => {
   const { email, fetchCurrentUser } = useContext(CurrentUserContext);
 
-  return useCallback(async (id: string) => {
+  return useCallback(async (id?: string) => {
     const response = await fetch(`/users/${email}/vegetables/${id}`, {
       method: "DELETE",
       headers: DEFAULT_HEADERS,
