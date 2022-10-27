@@ -23,7 +23,7 @@ export const SingleVegetable = ({ item }: Props) => {
 
   return (
     <Wrapper>
-      {!item.datePlanted ? (
+      {item.datePlanted ? (
         <VegetableContainer>
           <Image src={item.img}></Image>
           <DescriptionContainer>
