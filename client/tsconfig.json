@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "jsx": "react",
+    "checkJs": true,
+    "lib": ["esnext", "dom"],
+    "esModuleInterop": true, 
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "outDir": "./dist",
+  },
+  "exclude": ["node_modules", "dist"]
+}
