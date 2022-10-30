@@ -15,18 +15,16 @@ export const WateringTracker = () => {
   const currentDate = new Date().toLocaleDateString("en-CA");
   const result = (Date.parse(currentDate) - Date.parse(currentUser.lastWateringDay)) / 24 / 60 / 60 / 1000;
   
-  return result <= 2 ? (
-    <Wrapper>
+  return (
+    <Wrapper $color={result <= 2 ? "lime" : "orange"}>
       <DailyInformationContainer>
         <Para><Span>today:</Span> {currentDate}</Para>
         {currentUser.lastWateringDay !== null &&
           <div>
-            <Para><Span>last Time Watered:</Span> {currentUser.lastWateringDay}</Para>
-            {result !== 0 ? (
-              <Para>{result} day(s) since last time garden was watered. Garden should be watered in {3 - result} day(s)!</Para>
-            ) : (
-              <Para>Garden was watered today!</Para>
-            )}
+            <>
+              <Para><Span>last Time Watered:</Span> {currentUser.lastWateringDay}</Para>
+              {wateringMessage(result)}
+            </>
           </div>
         }
       </DailyInformationContainer>
@@ -37,45 +35,13 @@ export const WateringTracker = () => {
         Water Garden
       </Button>
     </Wrapper >
-  ) : (
-    <WateringWrapper>
-      <DailyInformationContainer>
-        <Para><Span>today:</Span> {currentDate}</Para>
-        {currentUser.lastWateringDay !== null &&
-          <div>
-            <Para><Span>last Time Watered:</Span> {currentUser.lastWateringDay}</Para>
-            {result !== 0 ? (
-              <Para>{result} day(s) since last time garden was watered! <Span>Garden needs to be watered!</Span></Para>
-            ) : (
-              <Para>Garden was watered today!</Para>
-            )}
-          </div>
-        }
-      </DailyInformationContainer>
-      <Button
-        disabled={result === 0 ? true : false}
-        onClick={() => updateProfile({ lastWateringDay: currentDate })}
-      >
-        Water Garden
-      </Button>
-    </WateringWrapper >
   );
 };
 
-const Wrapper = styled.div`
-  background: lime;
+const Wrapper = styled.div<({ $color: string })>`
+  background: ${({$color}) => $color};
   width: 100%;
   height: 11vh;
-  border-bottom: solid black 1px;
-
-  display: flex;
-  justify-content: space-between;
-`;
-
-const WateringWrapper = styled.div`
-  background: orange;
-  width: 100%;
-  height: 100px;
   border-bottom: solid black 1px;
 
   display: flex;
@@ -102,3 +68,13 @@ const Para = styled.p`
 const Button = styled.button`
   margin: 5px;
 `;
+
+function wateringMessage(result: number) {
+  if (result < 1) {
+    return <Para>Garden was watered today!</Para>;
+  }
+  if (result < 3) {
+    return <Para>{result} day(s) since last time garden was watered. Garden should be watered in {3 - result} day(s)!</Para>;
+  }
+  return <Para>{result} day(s) since last time garden was watered. <Span>Garden needs to be watered!</Span></Para>;
+}
