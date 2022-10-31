@@ -13,6 +13,8 @@ import { updateVegetable } from "./handlers/updateVegetable.js";
 import { updateUser } from "./handlers/updateUser.js";
 import { addFavoriteVegetable } from "./handlers/addFavoriteVegetable.js";
 import { deleteFavoriteVegetable } from "./handlers/deleteFavoriteVegetable.js";
+import { authenticateUser } from "./handlers/authenticateUser.js";
+import { getAccessToken } from "./handlers/getAccessToken.js";
 
 
 const PORT = 8000;
@@ -28,6 +30,8 @@ client.connect()
       .use(morgan("tiny"))
       .use(express.json())
 
+      .get("/oauth", authenticateUser)
+      .get("/oauth/redirect", getAccessToken)
       .post("/users", addUser)
       .get("/users", getUsers)
       .get("/users/:email", getUser)
