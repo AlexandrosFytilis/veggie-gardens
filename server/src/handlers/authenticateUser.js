@@ -18,5 +18,5 @@ export const authenticateUser = async (_, res) => {
     scope: scopes
   });
 
-  res.writeHead(301, {"Location": authorizationUrl});
+  res.redirect(authorizationUrl);
 };

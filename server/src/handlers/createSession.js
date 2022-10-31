@@ -3,7 +3,15 @@ import { client } from "../server.js";
 export const createSession = async (request, response) => {
   const usersCollection = client.db("final_project").collection("users");
 
-  const { email, password } = request.body;
+  const { email, password, access_token } = request.body;
+
+  if (access_token) {
+    const user = await usersCollection.findOne({ access_token });
+    if (user) {
+      response.status(200).send({status: 200, data: user});
+      return;
+    }
+  }
 
   if (!email || !password) {
     response.status(400).send({message: "missing input"});

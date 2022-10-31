@@ -56,6 +56,9 @@ export const Login = () => {
             >
               Submit
             </Button>
+            <a href="http://localhost:8000/oauth">
+              GOOGLE
+            </a>
           </LoginContainer>
           <>
             <StyledPara>
