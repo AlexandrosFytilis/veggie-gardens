@@ -1,14 +1,24 @@
 import { client } from "../server.js";
+import bcrypt from "bcrypt";
 
 export const updateUser = async (request, response) => {
   const usersCollection = client.db("final_project").collection("users");
+  const requestedChanges = request.body;
+
+  if ("confirmPassword" in requestedChanges) {
+    delete requestedChanges["confirmPassword"];
+  }
+
+  if ("password" in requestedChanges) {
+    requestedChanges.password = await bcrypt.hash(request.body.password, 10);
+  }
 
   const result = await usersCollection.updateOne(
     {
       email: request.params.email
     },
     { 
-      $set: request.body
+      $set: requestedChanges
     }
   );
 

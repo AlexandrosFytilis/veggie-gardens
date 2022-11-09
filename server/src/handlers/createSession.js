@@ -28,10 +28,6 @@ export const createSession = async (request, response) => {
 
   const isMatch = await bcrypt.compare(password, user.password);
 
-  console.log(password);
-  console.log(user.password);
-  console.log(isMatch);
-
   if (!isMatch) {
     response.status(401).send({message: "Incorrect email or password."});
     return;
