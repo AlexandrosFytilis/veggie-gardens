@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import TextInput from "../../general/components/TextInput";
+import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider";
 import { COLORS } from "../../general/utils/colors";
 import { useUpdateProfile } from "./hooks/useUpdateProfile";
 
@@ -11,6 +12,7 @@ interface ProfileForm {
 }
 
 export const Profile = () => {
+  const currentUser = useContext(CurrentUserContext);
   const [requestedChange, setRequestedChange] = useState(false);
   const [updateInfo, setUpdateInfo] = useState({
     userName: "",
@@ -45,15 +47,16 @@ export const Profile = () => {
   return (
     <Wrapper>
       <LeftBlock />
-      <ContentContainer>
-        <PersonalInfoContainer>
-          <Button
-            onClick={() => setRequestedChange((current) => !current)}
-          >
-            {requestedChange ? "Cancel" : "Change Information?"}
-          </Button>
-        </PersonalInfoContainer>
-        {requestedChange &&
+      {!currentUser.email?.includes("gmail") && (
+        <ContentContainer>
+          <PersonalInfoContainer>
+            <Button
+              onClick={() => setRequestedChange((current) => !current)}
+            >
+              {requestedChange ? "Cancel" : "Change Information?"}
+            </Button>
+          </PersonalInfoContainer>
+          {requestedChange &&
             <div>
               <Form>
                 <TextInput setForm={setUpdateInfo} label="Username" type="text" formKey="userName" />
@@ -75,8 +78,10 @@ export const Profile = () => {
                 </div>
               </Form>
             </div>
-        }
-      </ContentContainer>
+          }
+        </ContentContainer>
+      )}
+      
       <RightBlock />
     </Wrapper>
   );
