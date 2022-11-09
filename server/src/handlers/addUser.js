@@ -1,9 +1,11 @@
 import { client } from "../server.js";
+import bcrypt from "bcrypt";
 
 export const addUser = async (request, response) => {
   const usersCollection = client.db("final_project").collection("users");
 
   const requestedEmail = request.body.email;
+  const hashedPassword = await bcrypt.hash(request.body.password, 10);
 
   if (!requestedEmail) {
     response.status(400).send({data: requestedEmail, message: "Email not provided"});
@@ -15,7 +17,7 @@ export const addUser = async (request, response) => {
     return;
   }
 
-  await usersCollection.insertOne(request.body);
+  await usersCollection.insertOne({...request.body, password: hashedPassword});
 
   response.status(201).send({status: 201, data: request.body});
 };
