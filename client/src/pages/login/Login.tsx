@@ -5,6 +5,7 @@ import TextInput from "../../general/components/TextInput";
 import { CurrentUserContext } from "../../general/contexts/CurrenUserProvider";
 import { COLORS } from "../../general/utils/colors";
 import { useLogin } from "./hooks/useLogin";
+import GoogleButton from "react-google-button";
 
 export interface LoginForm {
   email: string,
@@ -56,17 +57,22 @@ export const Login = () => {
             >
               Submit
             </Button>
-            <a href="http://localhost:8000/oauth">
-              GOOGLE
-            </a>
           </LoginContainer>
-          <>
-            <StyledPara>
-              Don&apos;t have an Account?&nbsp; 
-              <a href="/signup">sign Up</a>
-            </StyledPara>
-          </>
+          <SeperationContainer>
+            <Line />
+            <Seperator>or</Seperator>
+            <Line />
+          </SeperationContainer>
         </Form>
+        <OptionsContainer>
+          <Hyperlink href="http://localhost:8000/oauth">
+            <GoogleButton/>
+          </Hyperlink>
+          <StyledPara>
+              Don&apos;t have an Account?&nbsp; 
+            <a href="/signup">sign Up</a>
+          </StyledPara>
+        </OptionsContainer>
       </FormContainer>
       <WelcomePageContainer>
         <Container>
@@ -80,24 +86,53 @@ export const Login = () => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+`;
+
+const Line = styled.div`
+  background: ${COLORS.secondaryColor};
+  height: 3px;
+  width: 100%;
+`;
+
+const SeperationContainer = styled.div`
+  display: flex;
+  width: 85%;
+
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const Seperator = styled.p`
+  color: ${COLORS.secondaryColor};
+  padding: 0 10px;
+  font-size: 24px;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  
-  height: 100%;
 `;
 
 const FormContainer = styled.div`
   width: 25%;
   background: ${COLORS.primaryColor};
-  height: 100%;
   padding: 30px;
 
   border-right: solid 5px ${COLORS.secondaryColor};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const OptionsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 85%;
+  height: 100%;
 `;
 
 const Container = styled.div`
@@ -131,7 +166,7 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  border-bottom: solid 3px ${COLORS.secondaryColor};
+  /* border-bottom: solid 3px ${COLORS.secondaryColor}; */
 `;
 
 const Title = styled.h1`
@@ -162,3 +197,8 @@ const Button = styled.button`
   }
 `;
 
+const Hyperlink = styled.a`
+  text-decoration: none;
+
+  margin-top: 50px;
+`;

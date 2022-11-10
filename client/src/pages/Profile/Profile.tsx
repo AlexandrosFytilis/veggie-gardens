@@ -81,7 +81,6 @@ export const Profile = () => {
           }
         </ContentContainer>
       )}
-      
       <RightBlock />
     </Wrapper>
   );
