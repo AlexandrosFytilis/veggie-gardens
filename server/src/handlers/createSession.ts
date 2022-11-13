@@ -1,7 +1,8 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 import bcrypt from "bcrypt";
 
-export const createSession = async (request, response) => {
+export const createSession = async (request: Request, response: Response) => {
   const usersCollection = client.db("final_project").collection("users");
 
   const { email, password, access_token } = request.body;

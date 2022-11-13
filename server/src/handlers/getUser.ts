@@ -1,6 +1,7 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 
-export const getUser = async (request, response) => {
+export const getUser = async (request: Request, response: Response) => {
   const { email } = request.params;
 
   const usersCollection = client.db("final_project").collection("users");

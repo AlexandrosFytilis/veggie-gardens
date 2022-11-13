@@ -1,25 +1,29 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import { addUser } from "./handlers/addUser.js";
-import { getUser } from "./handlers/getUser.js";
-import { getUsers } from "./handlers/getUsers.js";
+import { addUser } from "./handlers/addUser";
+import { getUser } from "./handlers/getUser";
+import { getUsers } from "./handlers/getUsers";
 import { MongoClient } from "mongodb";
-import { createSession } from "./handlers/createSession.js";
+import { createSession } from "./handlers/createSession";
 import dotenv from "dotenv";
-import { addVegetable } from "./handlers/addVegetable.js";
-import { deleteVegetable } from "./handlers/deleteVegetable.js";
-import { updateVegetable } from "./handlers/updateVegetable.js";
-import { updateUser } from "./handlers/updateUser.js";
-import { addFavoriteVegetable } from "./handlers/addFavoriteVegetable.js";
-import { deleteFavoriteVegetable } from "./handlers/deleteFavoriteVegetable.js";
-import { authenticateUser } from "./handlers/authenticateUser.js";
-import { getAccessToken } from "./handlers/getAccessToken.js";
+import { addVegetable } from "./handlers/addVegetable";
+import { deleteVegetable } from "./handlers/deleteVegetable";
+import { updateVegetable } from "./handlers/updateVegetable";
+import { updateUser } from "./handlers/updateUser";
+import { addFavoriteVegetable } from "./handlers/addFavoriteVegetable";
+import { deleteFavoriteVegetable } from "./handlers/deleteFavoriteVegetable";
+import { authenticateUser } from "./handlers/authenticateUser";
+import { getAccessToken } from "./handlers/getAccessToken";
 
 
 const PORT = 8000;
 dotenv.config();
 const { MONGO_URI } = process.env;
+
+if (!MONGO_URI) {
+  throw new Error("Missing MONGO_URI");
+}
 
 export const client = new MongoClient(MONGO_URI);
 

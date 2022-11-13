@@ -1,6 +1,7 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 
-export const getUsers = async (request, response) => {
+export const getUsers = async (_: Request, response: Response) => {
   const users = await client.db("final_project").collection("users").find().toArray();
 
   if (users.length !== 0) {

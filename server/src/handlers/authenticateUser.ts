@@ -1,6 +1,7 @@
+import { Request, Response } from "express";
 import { google } from "googleapis";
 
-export const authenticateUser = async (_, res) => {
+export const authenticateUser = async (_: Request, response: Response) => {
   const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
   const oauth2Client = new google.auth.OAuth2(
@@ -18,5 +19,5 @@ export const authenticateUser = async (_, res) => {
     scope: scopes
   });
 
-  res.redirect(authorizationUrl);
+  response.redirect(authorizationUrl);
 };

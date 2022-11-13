@@ -1,7 +1,8 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 import bcrypt from "bcrypt";
 
-export const updateUser = async (request, response) => {
+export const updateUser = async (request: Request, response: Response) => {
   const usersCollection = client.db("final_project").collection("users");
   const requestedChanges = request.body;
 

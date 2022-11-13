@@ -1,7 +1,8 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 import { v4 as uuidV4 } from "uuid";
 
-export const addVegetable = async (request, response) => {
+export const addVegetable = async (request: Request, response: Response) => {
   const usersCollection = client.db("final_project").collection("users");
 
   const vegetable = request.body;

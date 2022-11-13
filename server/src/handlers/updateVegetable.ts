@@ -1,14 +1,16 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 
-export const deleteVegetable = async (request, response) => {
+export const updateVegetable = async (request: Request, response: Response) => {
   const usersCollection = client.db("final_project").collection("users");
 
   const result = await usersCollection.updateOne(
     {
-      email: request.params.email
+      email: request.params.email,
+      vegetables: { $elemMatch: { id: request.params.id }}
     },
     { 
-      $pull:  { vegetables: {id: request.params.id} }
+      $set: { "vegetables.$": request.body }
     }
   );
 
@@ -22,5 +24,5 @@ export const deleteVegetable = async (request, response) => {
     return;
   }
 
-  response.status(201).send({status: 201, message: "Vegetable deleted"});
+  response.status(201).send({status: 201, message: "Vegetable updated"});
 };

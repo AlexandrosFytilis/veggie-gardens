@@ -1,6 +1,7 @@
-import { client } from "../server.js";
+import { Request, Response } from "express";
+import { client } from "../server";
 
-export const deleteFavoriteVegetable = async (request, response) => {
+export const addFavoriteVegetable = async (request: Request, response: Response) => {
   const usersCollection = client.db("final_project").collection("users");
 
   const email = request.params.email;
@@ -17,17 +18,20 @@ export const deleteFavoriteVegetable = async (request, response) => {
     return;
   }
 
-  if (await usersCollection.findOne({favoriteVegetables: vegetableName}) === null) {
-    response.status(409).send({data: vegetableName, message: "vegetable is not in favorites"});
+  if (user.favoriteVegetables.includes(vegetableName)) {
+    response.status(409).send({data: vegetableName, message: "vegetable already in favorites"});
+    return;
+  }
+
+  if (user.favoriteVegetables.length >= 5) {
+    response.status(409).send({data: vegetableName, message: "Reached max favorite vegetables (5 max)"});
     return;
   }
 
   const result = await usersCollection.updateOne(
-    {
-      email: request.params.email
-    },
+    user,
     { 
-      $pull: { favoriteVegetables: vegetableName }
+      $push: { favoriteVegetables: vegetableName }
     }
   );
 
