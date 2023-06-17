@@ -1,6 +1,7 @@
 # Veggie Gardens
 ## Description
 A web application to help users keep track of their planted vegetables and their maintenance.
+## Youtube Link: https://www.youtube.com/watch?v=Ov8M1ZITqqI
 ## Technologies
 ### Frontend
 - TypeScript
